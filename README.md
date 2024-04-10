@@ -16,7 +16,7 @@
 
 Xenon is a modern Minecraft plugin designed for the latest version of the game. The main objectives of this plugin are
 to learn and have fun. Xenon is a plugin that is designed to be used on a server with friends, and is not intended to
-be used on a public server. This plugin is based on [EternalCore](https://github.com/EternalCodeTeam/EternalCore)
+be used on a public server. This plugin is based on [EternalCore](https://github.com/EternalCodeTeam/EternalCore). Please check them out!
 
 ## Installation
 
