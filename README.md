@@ -49,7 +49,7 @@ documentation, your efforts are much appreciated. Here's how you can contribute:
 
 ### 1. **Fork the Repository**
 
-Start by forking the [Xenon repository](https://github.com/joshuaportero/xenon) to your own GitHub account.
+Start by forking the [Xenon](https://github.com/joshuaportero/xenon) repository to your own GitHub account.
 
 ### 2. **Clone the Forked Repository**
 
