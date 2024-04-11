@@ -14,37 +14,22 @@ public interface Translation {
         Notice permissionMessage();
 
         Notice usageMessage();
-
         Notice usageMessageHead();
-
         Notice usageMessageEntry();
 
         Notice offlinePlayer();
-
         Notice onlyPlayer();
-
         Notice numberBiggerThanOrEqualZero();
-
         Notice noItem();
-
         Notice noArgument();
-
         Notice noDamaged();
-
         Notice noDamagedItems();
-
         Notice noEnchantment();
-
         Notice noValidEnchantmentLevel();
-
         Notice invalidTimeFormat();
-
         Notice worldDoesntExist();
-
         Notice youMustGiveWorldName();
-
         Notice incorrectNumberOfChunks();
-
         Notice incorrectLocation();
     }
 
@@ -53,7 +38,6 @@ public interface Translation {
 
     interface Format {
         String enable();
-
         String disable();
     }
 
