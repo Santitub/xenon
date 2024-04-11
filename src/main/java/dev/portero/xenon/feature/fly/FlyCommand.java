@@ -21,7 +21,7 @@ class FlyCommand {
     }
 
     @Execute
-    @Permission("eternalcore.fly")
+    @Permission("xenon.fly")
     void execute(@Context Player player) {
         player.setAllowFlight(!player.getAllowFlight());
 
@@ -33,7 +33,7 @@ class FlyCommand {
     }
 
     @Execute
-    @Permission("eternalcore.fly.other")
+    @Permission("xenon.fly.other")
     void execute(@Context Viewer viewer, @Arg Player target) {
         target.setAllowFlight(!target.getAllowFlight());
 
