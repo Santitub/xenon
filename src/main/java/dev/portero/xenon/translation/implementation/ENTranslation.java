@@ -22,94 +22,60 @@ public class ENTranslation extends AbstractTranslation {
 
     @Description({
             "#",
-            "# This file is responsible for the English translation in Xenon.",
+            "#     $$\\   $$\\                                         ",
+            "#     $$ |  $$ |                                        ",
+            "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
+            "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
+            "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
+            "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
+            "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
+            "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
             "#",
     })
 
+
     @Description({
             " ",
-            "# You can use MiniMessages formatting everywhere, or standard &7, &e etc.",
-            "# More information about MiniMessages: https://docs.adventure.kyori.net/minimessage/format.html",
-            "# You can use the web generator to generate and preview messages: https://webui.adventure.kyori.net/",
-            "#",
-            "# The new notification system supports various formats and options:",
-            "#",
-            "# Examples:",
-            "#",
-            "# example: []",
-            "#",
-            "# example: \"Hello world\"",
-            "#",
-            "# example:",
-            "#   - \"Hello\"",
-            "#   - \"world\"",
-            "#",
-            "# example:",
-            "#   title: \"Hello world\"",
-            "#   subtitle: \"Subtitle\"",
-            "#   times: \"1s 2s 1s\"",
-            "#",
-            "# example:",
-            "#   subtitle: \"Subtitle\"",
-            "#   chat: \"Death message\"",
-            "#",
-            "# example:",
-            "#   actionbar: \"Hello world\"",
-            "#   chat:",
-            "#     - \"Hello\"",
-            "#     - \"world\"",
-            "#",
-            "# example:",
-            "#   actionbar: \"Hello world\"",
-            "#   # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html ",
-            "#   sound: \"ENTITY_PLAYER_LEVELUP 2.0 1.0\"",
-            "#",
-            "# example:",
-            "#   actionbar: \"Hello world\"",
-            "#   # Sound categories: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/SoundCategory.html",
-            "#   sound: \"ENTITY_PLAYER_LEVELUP WEATHER 2.0 1.0\" # If you want to play a sound in a certain category, for example if a player has the sound category \"WEATHER\" in the game settings set to 0%, the sound will not play.",
-            "#",
-            "# example:",
-            "#   titleHide: true # This clearing the title from the screen, example if other plugin send title you can clear it with this for any action",
-            "#",
+            "# This section is responsible for all messages used during bad of a command argument.",
+            "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",
             " "
     })
-    @Description("# This section is responsible for all messages used during bad of a command argument")
     public ENArgumentSection argument = new ENArgumentSection();
 
     @Getter
     @Contextual
     public static class ENArgumentSection implements ArgumentSection {
-        @Description("# {PERMISSIONS} - Required permission")
-        public Notice permissionMessage = Notice.chat("<red>✘ <dark_red>You don't have permission to perform this command! <red>({PERMISSIONS})");
+        @Description("# {PERMISSIONS} - The specific permission required to execute the associated command.")
+        public Notice permissionMessage = Notice.chat("<red>You don't have permission to perform this command! <red>(<gray>{PERMISSIONS}<red>)");
 
-        @Description({" ", "# {USAGE} - Correct usage"})
-        public Notice usageMessage = Notice.chat("<gold>✘ <white>Correct usage: <gold>{USAGE}");
-        public Notice usageMessageHead = Notice.chat("<green>► <white>Correct usage:");
-        public Notice usageMessageEntry = Notice.chat("<green>► <white>{USAGE}");
+        @Description({" ", "# {USAGE} - The correct way to use the associated command."})
+        public Notice usageMessage = Notice.chat("<red>Usage: <gray>{USAGE}");
+        public Notice usageMessageHead = Notice.chat("<red>Correct usage:");
+        public Notice usageMessageEntry = Notice.chat("<red>- <gray>{USAGE}");
 
         @Description(" ")
-        public Notice offlinePlayer = Notice.chat("<red>✘ <dark_red>This player is currently offline!");
-        public Notice onlyPlayer = Notice.chat("<red>✘ <dark_red>Command is only for players!");
-        public Notice numberBiggerThanOrEqualZero = Notice.chat("<red>✘ <dark_red>The number must be greater than or equal to 0!");
-        public Notice noItem = Notice.chat("<red>✘ <dark_red>You need item to use this command!");
-        public Notice noMaterial = Notice.chat("<red>✘ <dark_red>This item doesn't exist");
-        public Notice noArgument = Notice.chat("<red>✘ <dark_red>This argument doesn't exist");
-        public Notice noDamaged = Notice.chat("<red>✘ <dark_red>This item can't be repaired");
-        public Notice noDamagedItems = Notice.chat("<red>✘ <dark_red>You need damaged items to use this command!");
-        public Notice noEnchantment = Notice.chat("<red>✘ <dark_red>This enchantment doesn't exist");
-        public Notice noValidEnchantmentLevel = Notice.chat("<red>✘ <dark_red>This enchantment level is not supported!");
-        public Notice invalidTimeFormat = Notice.chat("<red>✘ <dark_red>Invalid time format!");
-        public Notice worldDoesntExist = Notice.chat("<red>✘ <dark_red>This world doesn't exist!");
-        public Notice youMustGiveWorldName = Notice.chat("<red>✘ <dark_red>You must provide a world name!");
-        public Notice incorrectLocation = Notice.chat("<red>✘ <dark_red>Incorrect location!");
-        public Notice incorrectNumberOfChunks = Notice.chat("<red>✘ <dark_red>Incorrect number of chunks!");
+        public Notice offlinePlayer = Notice.chat("<red>The player you're trying to reach is currently not online.");
+        public Notice onlyPlayer = Notice.chat("<red>This command is reserved for player use only.");
+        public Notice numberBiggerThanOrEqualZero = Notice.chat("<red>Enter a number that is zero or positive.");
+        public Notice noItem = Notice.chat("<red>An item is required to execute this command.");
+        public Notice noMaterial = Notice.chat("<red>The specified item was not found.");
+        public Notice noArgument = Notice.chat("<red>Unrecognized argument. Please check and try again.");
+        public Notice noDamaged = Notice.chat("<red>The item is not damaged and cannot be repaired.");
+        public Notice noDamagedItems = Notice.chat("<red>Damaged items are needed to use this command.");
+        public Notice noEnchantment = Notice.chat("<red>The enchantment specified does not exist.");
+        public Notice noValidEnchantmentLevel = Notice.chat("<red>Unsupported enchantment level.");
+        public Notice invalidTimeFormat = Notice.chat("<red>The time format is incorrect. Please correct it.");
+        public Notice worldDoesntExist = Notice.chat("<red>No such world exists. Please verify the world name.");
+        public Notice youMustGiveWorldName = Notice.chat("<red>A world name must be specified for this command.");
+        public Notice incorrectLocation = Notice.chat("<red>The location provided is incorrect. Please verify.");
+        public Notice incorrectNumberOfChunks = Notice.chat("<red>The specified chunk count is incorrect.");
     }
 
     @Description({
             " ",
-            "# This answer is responsible for the general formatting of some values",
-            "# The purpose of the section is to reduce the repetition of some messages."
+            "# This answer is responsible for the general formatting of some values.",
+            "# The purpose of the section is to reduce the repetition of some messages.",
+            " "
     })
     public ENFormatSection format = new ENFormatSection();
 
@@ -122,20 +88,22 @@ public class ENTranslation extends AbstractTranslation {
 
     @Description({
             " ",
-            "# This section is responsible for player-related stuff and interactions with them."
+            "# This section is responsible for player-related stuff and interactions with them.",
+            "# It is responsible for messages related to the player, such as commands, events, and more.",
+            " "
     })
     public ENPlayerSection player = new ENPlayerSection();
 
     @Getter
     @Contextual
     public static class ENPlayerSection implements PlayerSection {
-        @Description({" ", "# {STATE} - Fly status"})
-        public Notice flyEnable = Notice.chat("<green>► <white>Fly is now {STATE}");
-        public Notice flyDisable = Notice.chat("<green>► <white>Fly is now {STATE}");
+        @Description("{STATE} - The current fly status of a player.")
+        public Notice flyEnable = Notice.chat("<gray>Fly is now {STATE}");
+        public Notice flyDisable = Notice.chat("<gray>Fly is now {STATE}");
 
-        @Description("# {PLAYER} - Target player, {STATE} - Target player fly status")
-        public Notice flySetEnable = Notice.chat("<green>► <white>Fly for <green>{PLAYER} <white>is now {STATE}");
-        public Notice flySetDisable = Notice.chat("<green>► <white>Fly for <green>{PLAYER} <white>is now {STATE}");
+        @Description({" ", "# {PLAYER} - The specified player in the command, {STATE} - The current fly status of a player."})
+        public Notice flySetEnable = Notice.chat("<gray>Fly for <yellow>{PLAYER} <gray>is now {STATE}");
+        public Notice flySetDisable = Notice.chat("<gray>Fly for <yellow>{PLAYER} <gray>is now {STATE}");
     }
 
 }
