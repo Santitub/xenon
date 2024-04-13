@@ -12,17 +12,26 @@ import java.io.File;
 
 @ConfigurationFile
 public class PluginConfiguration implements ReloadableConfig {
-
     @Description({
         "#",
-        "# This is the main configuration file for Xenon.",
+        "#     $$\\   $$\\                                         ",
+        "#     $$ |  $$ |                                        ",
+        "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
+        "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
+        "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
+        "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
+        "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
+        "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
         "#",
     })
 
-    @Description("# Whether the player should receive information about new plugin updates upon joining the server")
-    public boolean shouldReceivePluginUpdates = true;
+    @Description({
+        " ",
+        "# This is the main configuration file for Xenon.",
+        " ",
+    })
 
-    @Description({" ", "# Database Section"})
+    @Description("# Database Section")
     public Database database = new Database();
 
     @Contextual
