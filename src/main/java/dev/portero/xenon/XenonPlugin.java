@@ -29,21 +29,21 @@ import java.util.logging.Logger;
 
 public class XenonPlugin extends JavaPlugin {
 
-    private Publisher publisher;
     private final Stopwatch stopwatch = Stopwatch.createStarted();
+    private Publisher publisher;
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onEnable() {
         BeanProcessor beanProcessor = BeanProcessorFactory.defaultProcessors(this);
         BeanFactory beanFactory = new BeanFactory(beanProcessor)
-                .withCandidateSelf()
-                .addCandidate(Plugin.class, () -> this)
-                .addCandidate(Server.class, () -> this.getServer())
-                .addCandidate(Logger.class, () -> this.getLogger())
-                // TODO: Replace getDescription() by a method that returns the plugin description
-                .addCandidate(PluginDescriptionFile.class, this::getDescription)
-                .addCandidate(File.class, () -> this.getDataFolder())
-                .addCandidate(PluginManager.class, () -> this.getServer().getPluginManager());
+            .withCandidateSelf()
+            .addCandidate(Plugin.class, () -> this)
+            .addCandidate(Server.class, this::getServer)
+            .addCandidate(Logger.class, this::getLogger)
+            .addCandidate(PluginDescriptionFile.class, this::getDescription)
+            .addCandidate(File.class, this::getDataFolder)
+            .addCandidate(PluginManager.class, () -> this.getServer().getPluginManager());
 
         DependencyInjector dependencyInjector = new DependencyInjector(beanFactory);
         DependencyScanner scanner = DependencyScannerFactory.createDefault(dependencyInjector);
@@ -70,8 +70,8 @@ public class XenonPlugin extends JavaPlugin {
 
     private void loadConfigContextual(BeanFactory beanFactory) {
         List<BeanHolder<ReloadableConfig>> beans = beanFactory
-                .initializeCandidates(ReloadableConfig.class)
-                .getBeans(ReloadableConfig.class);
+            .initializeCandidates(ReloadableConfig.class)
+            .getBeans(ReloadableConfig.class);
 
         for (BeanHolder<ReloadableConfig> bean : beans) {
             ReloadableConfig config = bean.get();
