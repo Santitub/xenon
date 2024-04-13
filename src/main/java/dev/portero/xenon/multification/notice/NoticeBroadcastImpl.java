@@ -47,12 +47,12 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
     protected final List<Formatter> formatters = new ArrayList<>();
 
     public NoticeBroadcastImpl(
-            AsyncExecutor asyncExecutor,
-            TranslationProvider<Translation> translationProvider,
-            ViewerProvider<Viewer> viewerProvider,
-            PlatformBroadcaster platformBroadcaster,
-            LocaleProvider<Viewer> localeProvider,
-            AudienceConverter<Viewer> audienceConverter, Replacer<Viewer> replacer
+        AsyncExecutor asyncExecutor,
+        TranslationProvider<Translation> translationProvider,
+        ViewerProvider<Viewer> viewerProvider,
+        PlatformBroadcaster platformBroadcaster,
+        LocaleProvider<Viewer> localeProvider,
+        AudienceConverter<Viewer> audienceConverter, Replacer<Viewer> replacer
     ) {
         this.asyncExecutor = asyncExecutor;
         this.translationProvider = translationProvider;
@@ -144,11 +144,8 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
         this.notifications.add(translation -> {
             Optional<Notice> apply = extractor.extract(translation);
 
-            if (apply.isPresent()) {
-                return apply.get();
-            }
+            return apply.orElseGet(Notice::empty);
 
-            return Notice.empty();
         });
         return this.getThis();
     }
@@ -197,10 +194,7 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
     @Override
     @CheckReturnValue
     public B placeholder(String from, Optional<String> to) {
-        if (to.isPresent()) {
-            this.placeholders.put(from, translation -> to.get());
-        }
-
+        to.ifPresent(s -> this.placeholders.put(from, translation -> s));
         return this.getThis();
     }
 
@@ -268,8 +262,8 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
     protected <T extends NoticeContent> NoticePart<T> formatter(NoticePart<T> part, UnaryOperator<String> function) {
         if (part.content() instanceof NoticeContent.Text text) {
             List<String> messages = text.messages().stream()
-                    .map(function)
-                    .toList();
+                .map(function)
+                .toList();
 
             NoticeContent.Text context = new NoticeContent.Text(messages);
 
@@ -303,6 +297,11 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
         return new TranslatedFormatter(translatedFormatter);
     }
 
+    @SuppressWarnings("unchecked")
+    protected B getThis() {
+        return (B) this;
+    }
+
     protected class TranslatedFormatter {
 
         protected final Formatter translatedPlaceholders;
@@ -322,11 +321,6 @@ public class NoticeBroadcastImpl<Viewer, Translation, B extends NoticeBroadcast<
             return text;
         }
 
-    }
-
-    @SuppressWarnings("unchecked")
-    protected B getThis() {
-        return (B) this;
     }
 
 }
