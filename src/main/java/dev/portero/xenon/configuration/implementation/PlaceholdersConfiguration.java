@@ -7,6 +7,7 @@ import net.dzikoysk.cdn.source.Resource;
 import net.dzikoysk.cdn.source.Source;
 
 import java.io.File;
+import java.util.Map;
 
 @ConfigurationFile
 public class PlaceholdersConfiguration implements ReloadableConfig {
@@ -16,6 +17,9 @@ public class PlaceholdersConfiguration implements ReloadableConfig {
         "# Remember that you can use the placeholders in Xenon configuration files",
         "# Example: &7Hello, {prefix}&7World!"
     })
+
+    public Map<String, String> placeholders = Map.of(
+    );
 
     @Override
     public Resource resource(File folder) {
