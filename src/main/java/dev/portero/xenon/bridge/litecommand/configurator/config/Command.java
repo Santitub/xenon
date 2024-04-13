@@ -1,5 +1,6 @@
 package dev.portero.xenon.bridge.litecommand.configurator.config;
 
+import lombok.Getter;
 import net.dzikoysk.cdn.entity.Contextual;
 
 import java.util.ArrayList;
@@ -11,12 +12,16 @@ import java.util.Map;
 public class Command {
 
     public String name;
+
+    @Getter
     public boolean enabled;
+
     public List<String> aliases = new ArrayList<>();
     public List<String> permissions = new ArrayList<>();
     public Map<String, SubCommand> subCommands = new HashMap<>();
 
-    public Command() {}
+    public Command() {
+    }
 
     public Command(String name, List<String> aliases, List<String> permissions, boolean enabled) {
         this.name = name;
@@ -49,7 +54,4 @@ public class Command {
         return this.subCommands;
     }
 
-    public boolean isEnabled() {
-        return this.enabled;
-    }
 }
