@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class BeanFactory implements DependencyProvider {
 
-    private static final ThreadLocal<List<Class<?>>> dependencyStacktrace = ThreadLocal.withInitial(() -> new ArrayList<>());
+    private static final ThreadLocal<List<Class<?>>> dependencyStacktrace = ThreadLocal.withInitial(ArrayList::new);
 
     private final BeanContainer container = new BeanContainer();
     private final BeanCandidateContainer candidateContainer = new BeanCandidateContainer();
@@ -32,8 +32,8 @@ public class BeanFactory implements DependencyProvider {
         if (stacktrace.contains(type)) {
             stacktrace.add(type);
             String cycledDependencies = stacktrace.stream()
-                    .map(dependencyType -> dependencyType.getName())
-                    .collect(Collectors.joining(System.lineSeparator() + " -> "));
+                .map(Class::getName)
+                .collect(Collectors.joining(System.lineSeparator() + " -> "));
             stacktrace.remove(stacktrace.size() - 1);
 
             throw new BeanException("Cycled dependency detected! [" + cycledDependencies + "]", type);
@@ -46,13 +46,13 @@ public class BeanFactory implements DependencyProvider {
 
             if (beans.isEmpty()) {
                 return this.createBeanFromCandidate(type)
-                        .orElseThrow(() -> new BeanException("No bean found for type " + type.getName(), type));
+                    .orElseThrow(() -> new BeanException("No bean found for type " + type.getName(), type));
             }
 
             if (beans.size() > 1) {
                 String beansAsString = String.join(", ", beans.stream()
-                        .map(bean -> bean.get().toString())
-                        .toArray(String[]::new));
+                    .map(bean -> bean.get().toString())
+                    .toArray(String[]::new));
 
                 throw new BeanException("Multiple beans found for type " + type.getName() + ": " + beansAsString, type);
             }
@@ -102,14 +102,12 @@ public class BeanFactory implements DependencyProvider {
         return this;
     }
 
-    public BeanFactory initializeCandidates() {
+    public void initializeCandidates() {
         BeanCandidate candidate;
 
         while ((candidate = this.candidateContainer.nextCandidate()) != null) {
             this.initializeCandidate(candidate, Object.class);
         }
-
-        return this;
     }
 
     private <T> BeanHolder<T> initializeCandidate(BeanCandidate candidate, Class<T> asType) {
@@ -121,5 +119,4 @@ public class BeanFactory implements DependencyProvider {
 
         return bean;
     }
-
 }

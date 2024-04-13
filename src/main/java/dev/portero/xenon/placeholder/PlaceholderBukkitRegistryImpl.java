@@ -52,5 +52,4 @@ public class PlaceholderBukkitRegistryImpl implements PlaceholderRegistry {
     public Optional<PlaceholderRaw> getRawPlaceholder(String target) {
         return Optional.ofNullable(this.rawPlaceholders.get(target));
     }
-
 }

@@ -4,5 +4,4 @@ package dev.portero.xenon.multification.notice.provider;
 public interface TextMessageProvider<Translation> {
 
     String extract(Translation translation);
-
 }

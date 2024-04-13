@@ -45,5 +45,4 @@ public class Delay<T> {
     private Instant getDelayExpireMoment(T key) {
         return this.delays.asMap().getOrDefault(key, Instant.MIN);
     }
-
 }

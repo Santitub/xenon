@@ -1,8 +1,8 @@
 package dev.portero.xenon.database.wrapper;
 
-import dev.portero.xenon.scheduler.Scheduler;
-import dev.portero.xenon.database.DatabaseManager;
 import com.j256.ormlite.dao.Dao;
+import dev.portero.xenon.database.DatabaseManager;
+import dev.portero.xenon.scheduler.Scheduler;
 import panda.std.function.ThrowingFunction;
 
 import java.sql.SQLException;
@@ -63,5 +63,4 @@ public abstract class AbstractRepositoryOrmLite {
 
         return completableFuture;
     }
-
 }

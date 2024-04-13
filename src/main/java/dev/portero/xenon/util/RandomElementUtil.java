@@ -18,8 +18,7 @@ public class RandomElementUtil {
         }
 
         return collection.stream()
-                .skip(RANDOM.nextInt(collection.size()))
-                .findFirst();
+            .skip(RANDOM.nextInt(collection.size()))
+            .findFirst();
     }
-
 }

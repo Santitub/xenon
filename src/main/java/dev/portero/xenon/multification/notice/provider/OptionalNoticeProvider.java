@@ -8,5 +8,4 @@ import java.util.Optional;
 public interface OptionalNoticeProvider<Translation> {
 
     Optional<Notice> extract(Translation translation);
-
 }

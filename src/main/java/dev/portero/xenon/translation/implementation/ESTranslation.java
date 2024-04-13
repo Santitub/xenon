@@ -21,24 +21,23 @@ public class ESTranslation extends AbstractTranslation {
     }
 
     @Description({
-            "#",
-            "#     $$\\   $$\\                                         ",
-            "#     $$ |  $$ |                                        ",
-            "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
-            "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
-            "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
-            "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
-            "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
-            "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
-            "#",
+        "#",
+        "#     $$\\   $$\\                                         ",
+        "#     $$ |  $$ |                                        ",
+        "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
+        "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
+        "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
+        "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
+        "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
+        "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
+        "#",
     })
 
-
     @Description({
-            " ",
-            "# Esta sección es responsable de todos los mensajes utilizados durante el mal uso de un argumento de comando.",
-            "# Se encarga de los mensajes relacionados con el argumento en sí, como errores, uso y más.",
-            " "
+        " ",
+        "# Esta sección es responsable de todos los mensajes utilizados durante el mal uso de un argumento de comando.",
+        "# Se encarga de los mensajes relacionados con el argumento en sí, como errores, uso y más.",
+        " "
     })
     public ENArgumentSection argument = new ENArgumentSection();
 
@@ -72,10 +71,10 @@ public class ESTranslation extends AbstractTranslation {
     }
 
     @Description({
-            " ",
-            "# Esta sección es responsable del formato general de algunos valores.",
-            "# El propósito de la sección es reducir la repetición de algunos mensajes.",
-            " "
+        " ",
+        "# Esta sección es responsable del formato general de algunos valores.",
+        "# El propósito de la sección es reducir la repetición de algunos mensajes.",
+        " "
     })
     public ENFormatSection format = new ENFormatSection();
 
@@ -87,10 +86,10 @@ public class ESTranslation extends AbstractTranslation {
     }
 
     @Description({
-            " ",
-            "# Esta sección es responsable de asuntos relacionados con los jugadores e interacciones con ellos.",
-            "# Se encarga de los mensajes relacionados con el jugador, como comandos, eventos y más.",
-            " "
+        " ",
+        "# Esta sección es responsable de asuntos relacionados con los jugadores e interacciones con ellos.",
+        "# Se encarga de los mensajes relacionados con el jugador, como comandos, eventos y más.",
+        " "
     })
     public ENPlayerSection player = new ENPlayerSection();
 
@@ -105,5 +104,4 @@ public class ESTranslation extends AbstractTranslation {
         public Notice flySetEnable = Notice.chat("<gray>El vuelo para <yellow>{PLAYER} <gray>ahora está {STATE}");
         public Notice flySetDisable = Notice.chat("<gray>El vuelo para <yellow>{PLAYER} <gray>ahora está {STATE}");
     }
-
 }

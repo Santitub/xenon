@@ -3,9 +3,9 @@ package dev.portero.xenon.translation;
 
 import dev.portero.xenon.feature.language.Language;
 import dev.portero.xenon.feature.language.LanguageSettings;
+import dev.portero.xenon.multification.translation.TranslationProvider;
 import dev.portero.xenon.user.User;
 import dev.portero.xenon.viewer.Viewer;
-import dev.portero.xenon.multification.translation.TranslationProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

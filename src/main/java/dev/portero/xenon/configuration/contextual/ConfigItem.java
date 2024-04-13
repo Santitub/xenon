@@ -1,7 +1,6 @@
 package dev.portero.xenon.configuration.contextual;
 
 import net.dzikoysk.cdn.entity.Contextual;
-import net.dzikoysk.cdn.entity.Description;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -33,6 +32,10 @@ public class ConfigItem {
 
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String name() {
         return this.name;
     }
@@ -59,10 +62,6 @@ public class ConfigItem {
 
     public List<String> commands() {
         return this.commands;
-    }
-
-    public static Builder builder() {
-        return new Builder();
     }
 
     public static class Builder {

@@ -35,13 +35,31 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
 
     private static final TemporalAmountParser<Duration> DURATION_PARSER = DurationParser.TIME_UNITS;
 
+    private static Element<?> empty(SerializeContext context) {
+        return oneLine(context.key, context.description, EMPTY_NOTICE);
+    }
+
+    private static Element<?> oneLine(String key, List<String> description, String value) {
+        return key == null || key.isEmpty() ? new Piece(value) : new Entry(description, key, value);
+    }
+
+    private static Section toSection(String key, List<String> description, List<String> elements) {
+        Section section = new Section(description, key);
+
+        for (String message : elements) {
+            section.append(new Piece(StandardOperators.ARRAY + " " + CdnUtils.stringify(true, message)));
+        }
+
+        return section;
+    }
+
     @Override
     public Result<? extends Element<?>, ? extends Exception> serialize(CdnSettings settings, List<String> description, String key, TargetType type, Notice entity) {
         SerializeContext context = new SerializeContext(settings, description, key, type, entity);
 
         return this.serializeEmpty(context)
-                .orElse(error -> this.serializerUndisclosedChat(context))
-                .orElse(error -> this.serializeAll(context));
+            .orElse(error -> this.serializerUndisclosedChat(context))
+            .orElse(error -> this.serializeAll(context));
     }
 
     private Result<Element<?>, Exception> serializeEmpty(SerializeContext context) {
@@ -107,9 +125,9 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
 
             if (part.content() instanceof Times times) {
                 String textTimes = TIMES.formatted(
-                        DURATION_PARSER.format(times.fadeIn()),
-                        DURATION_PARSER.format(times.stay()),
-                        DURATION_PARSER.format(times.fadeOut())
+                    DURATION_PARSER.format(times.fadeIn()),
+                    DURATION_PARSER.format(times.stay()),
+                    DURATION_PARSER.format(times.fadeOut())
                 );
 
                 section.append(new Entry(context.description, key, new Piece(textTimes)));
@@ -132,19 +150,19 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
                 SoundCategory category = music.category();
 
                 Entry entry = category == null
-                        ?
-                        new Entry(context.description, key, new Piece(MUSIC_WITHOUT_CATEGORY.formatted(
-                                music.sound().name(),
-                                String.valueOf(music.pitch()),
-                                String.valueOf(music.volume())
-                        )))
-                        :
-                        new Entry(context.description, key, new Piece(MUSIC_WITH_CATEGORY.formatted(
-                                music.sound().name(),
-                                category.name(),
-                                String.valueOf(music.pitch()),
-                                String.valueOf(music.volume())
-                        )));
+                    ?
+                    new Entry(context.description, key, new Piece(MUSIC_WITHOUT_CATEGORY.formatted(
+                        music.sound().name(),
+                        String.valueOf(music.pitch()),
+                        String.valueOf(music.volume())
+                    )))
+                    :
+                    new Entry(context.description, key, new Piece(MUSIC_WITH_CATEGORY.formatted(
+                        music.sound().name(),
+                        category.name(),
+                        String.valueOf(music.pitch()),
+                        String.valueOf(music.volume())
+                    )));
 
                 section.append(entry);
                 continue;
@@ -156,34 +174,12 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
         return Result.ok(section);
     }
 
-    private static Element<?> empty(SerializeContext context) {
-        return oneLine(context.key, context.description, EMPTY_NOTICE);
-    }
-
-    private static Element<?> oneLine(String key, List<String> description, String value) {
-        return key == null || key.isEmpty() ? new Piece(value) : new Entry(description, key, value);
-    }
-
-    private static Section toSection(String key, List<String> description, List<String> elements) {
-        Section section = new Section(description, key);
-
-        for (String message : elements) {
-            section.append(new Piece(StandardOperators.ARRAY + " " + CdnUtils.stringify(true, message)));
-        }
-
-        return section;
-    }
-
-    private record SerializeContext(CdnSettings settings, List<String> description, String key, TargetType type,
-                                    Notice notice) {
-    }
-
     @Override
     public Result<Notice, Exception> deserialize(CdnSettings settings, Element<?> source, TargetType type, Notice defaultValue, boolean entryAsRecord) {
         DeserializeContext context = new DeserializeContext(settings, source, type, defaultValue, entryAsRecord);
 
         return this.deserializeEmpty(context)
-                .orElse(error -> this.deserializeAll(context));
+            .orElse(error -> this.deserializeAll(context));
     }
 
     private Result<Notice, Exception> deserializeEmpty(DeserializeContext context) {
@@ -211,7 +207,8 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
             return this.deserializeSection(section);
         }
 
-        return Result.error(new UnsupportedOperationException("Unsupported element type: " + context.source().getClass()));
+        return Result.error(new UnsupportedOperationException("Unsupported element type: " + context.source()
+            .getClass()));
     }
 
     private Result<Notice, Exception> deserializeSection(Section section) {
@@ -297,6 +294,10 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
         }
 
         return CdnUtils.destringify(value.trim());
+    }
+
+    private record SerializeContext(CdnSettings settings, List<String> description, String key, TargetType type,
+                                    Notice notice) {
     }
 
     record DeserializeContext(CdnSettings settings, Element<?> source, TargetType type, Notice defaultValue,

@@ -18,5 +18,4 @@ public interface PlatformBroadcaster {
     static PlatformBroadcaster withSerializer(ComponentSerializer<Component, Component, String> componentSerializer) {
         return new PlatformBroadcasterImpl(componentSerializer);
     }
-
 }

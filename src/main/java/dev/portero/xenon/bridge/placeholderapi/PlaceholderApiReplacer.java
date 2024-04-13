@@ -10,6 +10,4 @@ public class PlaceholderApiReplacer implements PlaceholderReplacer {
     public String apply(String text, Player targetPlayer) {
         return PlaceholderAPI.setPlaceholders(targetPlayer, text);
     }
-
-
 }

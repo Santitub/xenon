@@ -6,5 +6,4 @@ import dev.portero.xenon.multification.notice.Notice;
 public interface NoticeProvider<Translation> {
 
     Notice extract(Translation translation);
-
 }

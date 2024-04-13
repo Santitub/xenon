@@ -4,5 +4,4 @@ package dev.portero.xenon.multification.shared;
 public interface Replacer<Viewer> {
 
     String apply(Viewer viewer, String text);
-
 }

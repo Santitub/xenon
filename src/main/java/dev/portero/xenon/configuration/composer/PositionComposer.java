@@ -14,5 +14,4 @@ public class PositionComposer implements SimpleComposer<Position> {
     public Result<String, Exception> serialize(Position entity) {
         return Result.ok(entity.toString());
     }
-
 }

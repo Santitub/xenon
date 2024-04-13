@@ -8,16 +8,16 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 public class AdventureUtil {
 
     public static final LegacyComponentSerializer SECTION_SERIALIZER = LegacyComponentSerializer.builder()
-            .character('§')
-            .hexColors()
-            .useUnusualXRepeatedCharacterHexFormat()
-            .build();
+        .character('§')
+        .hexColors()
+        .useUnusualXRepeatedCharacterHexFormat()
+        .build();
 
     private static final LegacyComponentSerializer AMPERSAND_SERIALIZER = LegacyComponentSerializer.builder()
-            .character('&')
-            .hexColors()
-            .useUnusualXRepeatedCharacterHexFormat()
-            .build();
+        .character('&')
+        .hexColors()
+        .useUnusualXRepeatedCharacterHexFormat()
+        .build();
 
     private static final Component RESET_ITALIC = Component.text().decoration(TextDecoration.ITALIC, false).build();
 

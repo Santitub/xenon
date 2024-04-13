@@ -26,14 +26,6 @@ public enum NoticeType {
         this.name = name;
     }
 
-    public String getKey() {
-        return this.name;
-    }
-
-    public Class<?> contentType() {
-        return this.inputType;
-    }
-
     public static NoticeType fromKey(String key) {
         for (NoticeType type : values()) {
             if (type.getKey().equals(key)) {
@@ -44,4 +36,11 @@ public enum NoticeType {
         throw new IllegalArgumentException("Unknown notice type: " + key);
     }
 
+    public String getKey() {
+        return this.name;
+    }
+
+    public Class<?> contentType() {
+        return this.inputType;
+    }
 }

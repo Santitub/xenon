@@ -2,8 +2,8 @@ package dev.portero.xenon.bridge.litecommand.contextual;
 
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.lite.LiteContextual;
-import dev.portero.xenon.viewer.ViewerService;
 import dev.portero.xenon.viewer.Viewer;
+import dev.portero.xenon.viewer.ViewerService;
 import dev.rollczi.litecommands.context.ContextProvider;
 import dev.rollczi.litecommands.context.ContextResult;
 import dev.rollczi.litecommands.invocation.Invocation;

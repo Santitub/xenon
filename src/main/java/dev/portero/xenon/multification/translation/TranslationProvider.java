@@ -9,5 +9,4 @@ public interface TranslationProvider<Translation> {
 
     @NotNull
     Translation provide(Locale locale);
-
 }

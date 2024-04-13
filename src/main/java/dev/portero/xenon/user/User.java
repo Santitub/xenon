@@ -8,11 +8,10 @@ import java.util.UUID;
 
 public class User implements Viewer {
 
-    private UserSettings userSettings = new UserSettingsImpl(() -> this.userClientSettings);
-    private UserClientSettings userClientSettings = UserClientSettings.NONE;
-
     private final String name;
     private final UUID uuid;
+    private UserClientSettings userClientSettings = UserClientSettings.NONE;
+    private UserSettings userSettings = new UserSettingsImpl(() -> this.userClientSettings);
 
     User(UUID uuid, String name) {
         this.name = name;

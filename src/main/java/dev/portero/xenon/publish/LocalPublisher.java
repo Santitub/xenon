@@ -3,6 +3,7 @@ package dev.portero.xenon.publish;
 import dev.portero.xenon.injector.DependencyInjector;
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.component.Service;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.HashMap;

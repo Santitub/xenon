@@ -36,5 +36,4 @@ public class Formatter {
         this.placeholders.put(placeholder, value);
         return this;
     }
-
 }

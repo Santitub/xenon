@@ -21,24 +21,23 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-            "#",
-            "#     $$\\   $$\\                                         ",
-            "#     $$ |  $$ |                                        ",
-            "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
-            "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
-            "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
-            "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
-            "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
-            "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
-            "#",
+        "#",
+        "#     $$\\   $$\\                                         ",
+        "#     $$ |  $$ |                                        ",
+        "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
+        "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
+        "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
+        "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
+        "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
+        "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
+        "#",
     })
 
-
     @Description({
-            " ",
-            "# This section is responsible for all messages used during bad of a command argument.",
-            "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",
-            " "
+        " ",
+        "# This section is responsible for all messages used during bad of a command argument.",
+        "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",
+        " "
     })
     public ENArgumentSection argument = new ENArgumentSection();
 
@@ -72,10 +71,10 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-            " ",
-            "# This answer is responsible for the general formatting of some values.",
-            "# The purpose of the section is to reduce the repetition of some messages.",
-            " "
+        " ",
+        "# This answer is responsible for the general formatting of some values.",
+        "# The purpose of the section is to reduce the repetition of some messages.",
+        " "
     })
     public ENFormatSection format = new ENFormatSection();
 
@@ -87,17 +86,17 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-            " ",
-            "# This section is responsible for player-related stuff and interactions with them.",
-            "# It is responsible for messages related to the player, such as commands, events, and more.",
-            " "
+        " ",
+        "# This section is responsible for player-related stuff and interactions with them.",
+        "# It is responsible for messages related to the player, such as commands, events, and more.",
+        " "
     })
     public ENPlayerSection player = new ENPlayerSection();
 
     @Getter
     @Contextual
     public static class ENPlayerSection implements PlayerSection {
-        @Description("{STATE} - The current fly status of a player.")
+        @Description("# {STATE} - The current fly status of a player.")
         public Notice flyEnable = Notice.chat("<gray>Fly is now {STATE}");
         public Notice flyDisable = Notice.chat("<gray>Fly is now {STATE}");
 

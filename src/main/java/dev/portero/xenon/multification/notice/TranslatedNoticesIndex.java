@@ -15,15 +15,14 @@ class TranslatedNoticesIndex {
         this.messages = messages;
     }
 
-    List<Notice> forLanguage(Locale language) {
-        return this.messages.get(language);
-    }
-
     static TranslatedNoticesIndex of(Collection<Locale> languages, Function<Locale, List<Notice>> messages) {
         Map<Locale, List<Notice>> messagesByLanguage = languages.stream()
-                .collect(Collectors.toMap(Function.identity(), messages));
+            .collect(Collectors.toMap(Function.identity(), messages));
 
         return new TranslatedNoticesIndex(messagesByLanguage);
     }
 
+    List<Notice> forLanguage(Locale language) {
+        return this.messages.get(language);
+    }
 }

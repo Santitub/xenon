@@ -21,7 +21,9 @@ public class LazyBeanCandidate implements BeanCandidate {
     @Override
     public <T> BeanHolder<T> createBean(Class<T> clazz) {
         if (!this.isCandidate(clazz)) {
-            throw new IllegalArgumentException("Class " + clazz.getName() + " is not a candidate for " + this.getInstance().getClass().getName());
+            throw new IllegalArgumentException("Class " + clazz.getName() + " is not a candidate for " + this.getInstance()
+                .getClass()
+                .getName());
         }
 
         return BeanHolder.of(clazz.cast(this.getInstance()));

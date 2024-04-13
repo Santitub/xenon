@@ -27,13 +27,13 @@ public abstract class Multification<Viewer, Translation> {
     @CheckReturnValue
     public NoticeBroadcast<Viewer, Translation, ?> create() {
         return new NoticeBroadcastImpl<>(
-                this.asyncExecutor(),
-                this.translationProvider(),
-                this.viewerProvider(),
-                this.platformBroadcaster(),
-                this.localeProvider(),
-                this.audienceConverter(),
-                this.globalReplacer()
+            this.asyncExecutor(),
+            this.translationProvider(),
+            this.viewerProvider(),
+            this.platformBroadcaster(),
+            this.localeProvider(),
+            this.audienceConverter(),
+            this.globalReplacer()
         );
     }
 
@@ -70,43 +70,43 @@ public abstract class Multification<Viewer, Translation> {
 
     public void player(UUID player, NoticeProvider<Translation> extractor, Formatter... formatters) {
         this.create()
-                .player(player)
-                .notice(extractor)
-                .formatter(formatters)
-                .send();
+            .player(player)
+            .notice(extractor)
+            .formatter(formatters)
+            .send();
     }
 
     public void players(Iterable<UUID> players, NoticeProvider<Translation> extractor, Formatter... formatters) {
         this.create()
-                .players(players)
-                .notice(extractor)
-                .formatter(formatters)
-                .send();
+            .players(players)
+            .notice(extractor)
+            .formatter(formatters)
+            .send();
     }
 
     public void viewer(Viewer viewer, NoticeProvider<Translation> extractor, Formatter... formatters) {
         this.create()
-                .viewer(viewer)
-                .notice(extractor)
-                .formatter(formatters)
-                .send();
+            .viewer(viewer)
+            .notice(extractor)
+            .formatter(formatters)
+            .send();
     }
 
 
     public void console(NoticeProvider<Translation> extractor, Formatter... formatters) {
         this.create()
-                .console()
-                .notice(extractor)
-                .formatter(formatters)
-                .send();
+            .console()
+            .notice(extractor)
+            .formatter(formatters)
+            .send();
     }
 
     public void all(NoticeProvider<Translation> extractor, Formatter... formatters) {
         this.create()
-                .all()
-                .notice(extractor)
-                .formatter(formatters)
-                .send();
+            .all()
+            .notice(extractor)
+            .formatter(formatters)
+            .send();
     }
 
 }

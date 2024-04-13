@@ -14,9 +14,9 @@ import java.io.File;
 public class PluginConfiguration implements ReloadableConfig {
 
     @Description({
-            "#",
-            "# This is the main configuration file for Xenon.",
-            "#",
+        "#",
+        "# This is the main configuration file for Xenon.",
+        "#",
     })
 
     @Description("# Whether the player should receive information about new plugin updates upon joining the server")
@@ -28,9 +28,9 @@ public class PluginConfiguration implements ReloadableConfig {
     @Contextual
     public static class Database {
         @Description({
-                "# SQL Drivers and ports:",
-                "# MySQL (3306), MariaDB (3306), PostgresQL (5432)",
-                "# SQLite, H2"
+            "# SQL Drivers and ports:",
+            "# MySQL (3306), MariaDB (3306), PostgresQL (5432)",
+            "# SQLite, H2"
         })
         public DatabaseType databaseType = DatabaseType.SQLITE;
 

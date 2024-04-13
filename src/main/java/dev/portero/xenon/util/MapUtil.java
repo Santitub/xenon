@@ -5,7 +5,8 @@ import java.util.Optional;
 
 public final class MapUtil {
 
-    private MapUtil() {}
+    private MapUtil() {
+    }
 
     public static <E> Optional<E> findByInstanceOf(Class<?> type, Map<Class<?>, E> map) {
         E element = map.get(type);
@@ -66,7 +67,4 @@ public final class MapUtil {
 
         return Optional.empty();
     }
-
-
-
 }

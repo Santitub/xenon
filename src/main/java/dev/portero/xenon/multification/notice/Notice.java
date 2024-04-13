@@ -24,78 +24,73 @@ public class Notice {
         this.parts.putAll(parts);
     }
 
-    public List<NoticePart<?>> parts() {
-        return this.parts.values().stream()
-                .toList();
-    }
-
     public static <T extends NoticeContent> Notice of(NoticeType type, T content) {
         return Notice.builder()
-                .withPart(new NoticePart<>(type, content))
-                .build();
+            .withPart(new NoticePart<>(type, content))
+            .build();
     }
 
     public static Notice chat(String... messages) {
         return Notice.builder()
-                .chat(messages)
-                .build();
+            .chat(messages)
+            .build();
     }
 
     public static Notice chat(Collection<String> messages) {
         return Notice.builder()
-                .chat(messages)
-                .build();
+            .chat(messages)
+            .build();
     }
 
     public static Notice actionbar(String actionBar) {
         return Notice.builder()
-                .actionBar(actionBar)
-                .build();
+            .actionBar(actionBar)
+            .build();
     }
 
     public static Notice title(String title) {
         return Notice.builder()
-                .title(title)
-                .build();
+            .title(title)
+            .build();
     }
 
     public static Notice subtitle(String subtitle) {
         return Notice.builder()
-                .subtitle(subtitle)
-                .build();
+            .subtitle(subtitle)
+            .build();
     }
 
     public static Notice title(String title, String subtitle) {
         return Notice.builder()
-                .title(title)
-                .subtitle(subtitle)
-                .build();
+            .title(title)
+            .subtitle(subtitle)
+            .build();
     }
 
     public static Notice title(String title, String subtitle, Duration fadeIn, Duration stay, Duration fadeOut) {
         return Notice.builder()
-                .title(title)
-                .subtitle(subtitle)
-                .times(fadeIn, stay, fadeOut)
-                .build();
+            .title(title)
+            .subtitle(subtitle)
+            .times(fadeIn, stay, fadeOut)
+            .build();
     }
 
     public static Notice hideTitle() {
         return Notice.builder()
-                .hideTitle()
-                .build();
+            .hideTitle()
+            .build();
     }
 
     public static Notice sound(Sound sound, SoundCategory category, float volume, float pitch) {
         return Notice.builder()
-                .sound(sound, category, pitch, volume)
-                .build();
+            .sound(sound, category, pitch, volume)
+            .build();
     }
 
     public static Notice sound(Sound sound, float volume, float pitch) {
         return Notice.builder()
-                .sound(sound, pitch, volume)
-                .build();
+            .sound(sound, pitch, volume)
+            .build();
     }
 
     public static Notice empty() {
@@ -104,6 +99,11 @@ public class Notice {
 
     public static Builder builder() {
         return new Builder();
+    }
+
+    public List<NoticePart<?>> parts() {
+        return this.parts.values().stream()
+            .toList();
     }
 
     public static class Builder {
@@ -145,7 +145,7 @@ public class Notice {
 
         public Builder title(String title, String subtitle) {
             return this.withPart(new NoticePart<>(NoticeType.TITLE, new Text(List.of(title))))
-                    .withPart(new NoticePart<>(NoticeType.SUBTITLE, new Text(List.of(subtitle))));
+                .withPart(new NoticePart<>(NoticeType.SUBTITLE, new Text(List.of(subtitle))));
         }
 
         public Builder subtitle(String subtitle) {
@@ -167,7 +167,5 @@ public class Notice {
         public Builder sound(Sound sound, SoundCategory category, float pitch, float volume) {
             return this.withPart(new NoticePart<>(NoticeType.SOUND, new Music(sound, category, pitch, volume)));
         }
-
     }
-
 }

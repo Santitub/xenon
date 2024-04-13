@@ -22,11 +22,11 @@ public record Position(double x, double y, double z, float yaw, float pitch, Str
             throw new IllegalArgumentException("Invalid position format: " + parse);
         } else {
             return new Position(Double.parseDouble(matcher.group("x")),
-                    Double.parseDouble(matcher.group("y")),
-                    Double.parseDouble(matcher.group("z")),
-                    Float.parseFloat(matcher.group("yaw")),
-                    Float.parseFloat(matcher.group("pitch")),
-                    matcher.group("world"));
+                                Double.parseDouble(matcher.group("y")),
+                                Double.parseDouble(matcher.group("z")),
+                                Float.parseFloat(matcher.group("yaw")),
+                                Float.parseFloat(matcher.group("pitch")),
+                                matcher.group("world"));
         }
     }
 

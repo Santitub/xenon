@@ -67,5 +67,4 @@ public final class ReflectUtil {
     public static <T> T unsafeCast(Object object) {
         return (T) object;
     }
-
 }

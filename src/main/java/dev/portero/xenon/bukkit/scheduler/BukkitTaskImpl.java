@@ -25,5 +25,4 @@ class BukkitTaskImpl implements Task {
     public boolean isAsync() {
         return !this.rootTask.isSync();
     }
-
 }

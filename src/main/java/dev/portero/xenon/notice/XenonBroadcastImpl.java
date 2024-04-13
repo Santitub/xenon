@@ -1,7 +1,5 @@
 package dev.portero.xenon.notice;
 
-import dev.portero.xenon.placeholder.Placeholders;
-import dev.portero.xenon.user.User;
 import dev.portero.xenon.multification.adventure.AudienceConverter;
 import dev.portero.xenon.multification.executor.AsyncExecutor;
 import dev.portero.xenon.multification.locale.LocaleProvider;
@@ -14,6 +12,9 @@ import dev.portero.xenon.multification.platform.PlatformBroadcaster;
 import dev.portero.xenon.multification.shared.Replacer;
 import dev.portero.xenon.multification.translation.TranslationProvider;
 import dev.portero.xenon.multification.viewer.ViewerProvider;
+import dev.portero.xenon.placeholder.Placeholders;
+import dev.portero.xenon.user.User;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;

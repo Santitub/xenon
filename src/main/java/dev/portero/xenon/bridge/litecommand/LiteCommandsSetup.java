@@ -31,7 +31,7 @@ class LiteCommandsSetup implements Subscriber {
     ) {
         return LiteBukkitFactory.builder("xenon", plugin, server)
             .commands(liteCommandsAnnotations)
-            .extension(new LiteAdventurePlatformExtension<CommandSender>(audiencesProvider), extension -> extension
+            .extension(new LiteAdventurePlatformExtension<>(audiencesProvider), extension -> extension
                 .serializer(miniMessage)
             );
     }

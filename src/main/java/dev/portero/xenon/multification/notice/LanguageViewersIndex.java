@@ -30,11 +30,10 @@ class LanguageViewersIndex<Viewer> {
 
         for (Viewer viewer : viewers) {
             viewersByLanguage
-                    .computeIfAbsent(localeProvider.provide(viewer), key -> new HashSet<>())
-                    .add(viewer);
+                .computeIfAbsent(localeProvider.provide(viewer), key -> new HashSet<>())
+                .add(viewer);
         }
 
         return new LanguageViewersIndex<>(viewersByLanguage);
     }
-
 }

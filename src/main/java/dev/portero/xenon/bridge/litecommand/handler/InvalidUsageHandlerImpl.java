@@ -4,8 +4,8 @@ import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.lite.LiteHandler;
 import dev.portero.xenon.notice.NoticeService;
 import dev.portero.xenon.placeholder.Placeholders;
-import dev.portero.xenon.viewer.ViewerService;
 import dev.portero.xenon.viewer.Viewer;
+import dev.portero.xenon.viewer.ViewerService;
 import dev.rollczi.litecommands.handler.result.ResultHandlerChain;
 import dev.rollczi.litecommands.invalidusage.InvalidUsage;
 import dev.rollczi.litecommands.invalidusage.InvalidUsageHandler;
@@ -44,7 +44,8 @@ public class InvalidUsageHandlerImpl implements InvalidUsageHandler<CommandSende
         this.noticeService.viewer(viewer, translation -> translation.argument().usageMessageHead());
 
         for (String schema : schematic.all()) {
-            this.noticeService.viewer(viewer, translation -> translation.argument().usageMessageEntry(), SCHEME.toFormatter(schema));
+            this.noticeService.viewer(viewer, translation -> translation.argument()
+                .usageMessageEntry(), SCHEME.toFormatter(schema));
         }
     }
 

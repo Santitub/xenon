@@ -2,13 +2,6 @@ package dev.portero.xenon.notice;
 
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.component.Service;
-import dev.portero.xenon.placeholder.PlaceholderRegistry;
-import dev.portero.xenon.scheduler.Scheduler;
-import dev.portero.xenon.translation.Translation;
-import dev.portero.xenon.translation.TranslationManager;
-import dev.portero.xenon.user.UserManager;
-import dev.portero.xenon.viewer.BukkitViewerProvider;
-import dev.portero.xenon.viewer.Viewer;
 import dev.portero.xenon.multification.Multification;
 import dev.portero.xenon.multification.adventure.AudienceConverter;
 import dev.portero.xenon.multification.executor.AsyncExecutor;
@@ -17,7 +10,13 @@ import dev.portero.xenon.multification.platform.PlatformBroadcaster;
 import dev.portero.xenon.multification.shared.Replacer;
 import dev.portero.xenon.multification.translation.TranslationProvider;
 import dev.portero.xenon.multification.viewer.ViewerProvider;
-
+import dev.portero.xenon.placeholder.PlaceholderRegistry;
+import dev.portero.xenon.scheduler.Scheduler;
+import dev.portero.xenon.translation.Translation;
+import dev.portero.xenon.translation.TranslationManager;
+import dev.portero.xenon.user.UserManager;
+import dev.portero.xenon.viewer.BukkitViewerProvider;
+import dev.portero.xenon.viewer.Viewer;
 import net.kyori.adventure.platform.AudienceProvider;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Server;

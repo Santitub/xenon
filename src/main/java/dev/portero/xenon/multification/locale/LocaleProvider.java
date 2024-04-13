@@ -9,5 +9,4 @@ public interface LocaleProvider<Viewer> {
 
     @NotNull
     Locale provide(Viewer viewer);
-
 }

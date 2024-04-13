@@ -4,9 +4,9 @@ import java.util.Locale;
 
 public interface UserClientSettings {
 
-    Locale getLocate();
-
     UserClientSettings NONE = new UserClientNoneSettings();
+
+    Locale getLocate();
 
     boolean isOnline();
 

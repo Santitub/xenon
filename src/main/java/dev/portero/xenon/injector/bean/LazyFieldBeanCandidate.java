@@ -14,7 +14,8 @@ public class LazyFieldBeanCandidate extends LazyBeanCandidate {
 
                 return field.get(instance);
             } catch (IllegalAccessException exception) {
-                throw new BeanException("Cannot access field " + field.getName() + " of " + instance.getClass().getName(), exception, field.getType());
+                throw new BeanException("Cannot access field " + field.getName() + " of " + instance.getClass()
+                    .getName(), exception, field.getType());
             }
         });
         this.field = field;
@@ -24,8 +25,8 @@ public class LazyFieldBeanCandidate extends LazyBeanCandidate {
     @Override
     public String toString() {
         return "LazyFieldBeanCandidate{" +
-                "instanceType=" + this.instance.getClass() +
-                ", field=" + this.field +
-                '}';
+            "instanceType=" + this.instance.getClass() +
+            ", field=" + this.field +
+            '}';
     }
 }

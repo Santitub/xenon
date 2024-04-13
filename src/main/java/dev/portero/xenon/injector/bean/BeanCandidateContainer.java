@@ -1,9 +1,9 @@
 package dev.portero.xenon.injector.bean;
 
+import javax.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import javax.annotation.Nullable;
 
 class BeanCandidateContainer {
 
@@ -53,5 +53,4 @@ class BeanCandidateContainer {
             return candidate;
         }
     }
-
 }

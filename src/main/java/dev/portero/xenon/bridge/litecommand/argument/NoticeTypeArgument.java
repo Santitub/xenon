@@ -35,8 +35,7 @@ class NoticeTypeArgument extends AbstractViewerArgument<NoticeTextType> {
     @Override
     public SuggestionResult suggest(Invocation<CommandSender> invocation, Argument<NoticeTextType> argument, SuggestionContext context) {
         return Arrays.stream(NoticeTextType.values())
-                .map(notificationType -> notificationType.name().toLowerCase())
-                .collect(SuggestionResult.collector());
+            .map(notificationType -> notificationType.name().toLowerCase())
+            .collect(SuggestionResult.collector());
     }
-
 }

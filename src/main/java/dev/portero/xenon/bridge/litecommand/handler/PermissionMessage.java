@@ -3,8 +3,8 @@ package dev.portero.xenon.bridge.litecommand.handler;
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.lite.LiteHandler;
 import dev.portero.xenon.notice.NoticeService;
-import dev.portero.xenon.viewer.ViewerService;
 import dev.portero.xenon.viewer.Viewer;
+import dev.portero.xenon.viewer.ViewerService;
 import dev.rollczi.litecommands.handler.result.ResultHandlerChain;
 import dev.rollczi.litecommands.invocation.Invocation;
 import dev.rollczi.litecommands.permission.MissingPermissions;
@@ -34,5 +34,4 @@ public class PermissionMessage implements MissingPermissionsHandler<CommandSende
             .viewer(viewer)
             .send();
     }
-
 }

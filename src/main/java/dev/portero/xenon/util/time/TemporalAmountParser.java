@@ -46,13 +46,6 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
     private static final Map<ChronoUnit, Long> UNIT_TO_NANO = new LinkedHashMap<>();
     private static final Map<ChronoUnit, Integer> PART_TIME_UNITS = new LinkedHashMap<>();
 
-    private Set<ChronoUnit> roundedUnits = new HashSet<>();
-
-    public TemporalAmountParser<T> roundOff(ChronoUnit unit) {
-        this.roundedUnits.add(unit);
-        return this;
-    }
-
     static {
         UNIT_TO_NANO.put(ChronoUnit.NANOS, 1L);
         UNIT_TO_NANO.put(ChronoUnit.MICROS, 1_000L);
@@ -80,6 +73,7 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
 
     private final Map<String, ChronoUnit> units = new LinkedHashMap<>();
     private final LocalDateTimeProvider baseForTimeEstimation;
+    private final Set<ChronoUnit> roundedUnits = new HashSet<>();
 
     protected TemporalAmountParser(LocalDateTimeProvider baseForTimeEstimation) {
         this.baseForTimeEstimation = baseForTimeEstimation;
@@ -88,6 +82,11 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
     protected TemporalAmountParser(Map<String, ChronoUnit> units, LocalDateTimeProvider baseForTimeEstimation) {
         this.baseForTimeEstimation = baseForTimeEstimation;
         this.units.putAll(units);
+    }
+
+    public TemporalAmountParser<T> roundOff(ChronoUnit unit) {
+        this.roundedUnits.add(unit);
+        return this;
     }
 
     public TemporalAmountParser<T> withUnit(String symbol, ChronoUnit chronoUnit) {
@@ -115,10 +114,8 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
             if (predicate.test(content.charAt(i))) {
                 continue;
             }
-
             return false;
         }
-
         return true;
     }
 
@@ -199,7 +196,7 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
             }
         }
 
-        if (number.length() > 0 || unit.length() > 0) {
+        if (!number.isEmpty() || !unit.isEmpty()) {
             throw new IllegalArgumentException("Input is not in the format of <number><unit>");
         }
 
@@ -232,24 +229,6 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
             return new TemporalEntry(count, chronoUnit);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid number " + number);
-        }
-    }
-
-    protected static class TemporalEntry {
-        private final long count;
-        private final ChronoUnit unit;
-
-        public TemporalEntry(long count, ChronoUnit unit) {
-            this.count = count;
-            this.unit = unit;
-        }
-
-        public long getCount() {
-            return this.count;
-        }
-
-        public ChronoUnit getUnit() {
-            return this.unit;
         }
     }
 
@@ -313,6 +292,12 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
 
     protected abstract Duration toDuration(LocalDateTimeProvider baseForTimeEstimation, T temporalAmount);
 
+    BigInteger durationToNano(Duration duration) {
+        return BigInteger.valueOf(duration.getSeconds())
+            .multiply(BigInteger.valueOf(1_000_000_000))
+            .add(BigInteger.valueOf(duration.getNano()));
+    }
+
     /**
      * A provider for {@link LocalDateTime}.
      * It is used to calculate the estimated time.
@@ -320,8 +305,6 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
      * For example, if the basis is {@link LocalDateTimeProvider#now}, then the estimated time is calculated from the current time.
      */
     public interface LocalDateTimeProvider {
-        LocalDateTime get();
-
         static LocalDateTimeProvider now() {
             return LocalDateTime::now;
         }
@@ -338,12 +321,10 @@ public abstract class TemporalAmountParser<T extends TemporalAmount> {
             return localDate::atStartOfDay;
         }
 
+        LocalDateTime get();
+
     }
 
-    BigInteger durationToNano(Duration duration) {
-        return BigInteger.valueOf(duration.getSeconds())
-                .multiply(BigInteger.valueOf(1_000_000_000))
-                .add(BigInteger.valueOf(duration.getNano()));
+    protected record TemporalEntry(long count, ChronoUnit unit) {
     }
-
 }

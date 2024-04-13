@@ -17,5 +17,4 @@ public class DurationComposer implements SimpleComposer<Duration> {
     public Result<String, Exception> serialize(Duration entity) {
         return Result.ok(entity.toString().substring(2).toLowerCase(Locale.ROOT));
     }
-
 }

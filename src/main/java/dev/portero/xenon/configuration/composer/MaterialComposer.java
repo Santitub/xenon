@@ -3,7 +3,7 @@ package dev.portero.xenon.configuration.composer;
 import org.bukkit.Material;
 import panda.std.Result;
 
-public class MaterialComposer implements SimpleComposer<Material>  {
+public class MaterialComposer implements SimpleComposer<Material> {
 
     @Override
     public Result<Material, Exception> deserialize(String source) {
@@ -14,5 +14,4 @@ public class MaterialComposer implements SimpleComposer<Material>  {
     public Result<String, Exception> serialize(Material entity) {
         return Result.ok(entity.name().toLowerCase());
     }
-
 }

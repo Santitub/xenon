@@ -1,11 +1,11 @@
 package dev.portero.xenon.database;
 
 import dev.portero.xenon.configuration.implementation.PluginConfiguration;
-import dev.portero.xenon.publish.Subscriber;
-import dev.portero.xenon.publish.event.XenonShutdownEvent;
 import dev.portero.xenon.injector.annotations.Bean;
 import dev.portero.xenon.injector.annotations.component.BeanSetup;
 import dev.portero.xenon.publish.Subscribe;
+import dev.portero.xenon.publish.Subscriber;
+import dev.portero.xenon.publish.event.XenonShutdownEvent;
 
 import java.io.File;
 import java.sql.SQLException;

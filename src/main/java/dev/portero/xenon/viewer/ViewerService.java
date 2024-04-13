@@ -1,6 +1,7 @@
 package dev.portero.xenon.viewer;
 
 import dev.portero.xenon.user.User;
+
 import java.util.Collection;
 import java.util.UUID;
 

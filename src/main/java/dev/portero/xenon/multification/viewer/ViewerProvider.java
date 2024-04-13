@@ -12,5 +12,4 @@ public interface ViewerProvider<Viewer> {
     Collection<Viewer> onlinePlayers();
 
     Collection<Viewer> all();
-
 }

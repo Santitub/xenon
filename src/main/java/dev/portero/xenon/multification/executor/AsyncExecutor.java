@@ -4,5 +4,4 @@ package dev.portero.xenon.multification.executor;
 public interface AsyncExecutor {
 
     void execute(Runnable runnable);
-
 }

@@ -40,8 +40,9 @@ class EnchantmentArgument extends AbstractViewerArgument<Enchantment> {
 
     @Override
     public SuggestionResult suggest(Invocation<CommandSender> invocation, Argument<Enchantment> argument, SuggestionContext context) {
-        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(Registry.ENCHANTMENT.iterator(), Spliterator.ORDERED),
-                false).map(enchantment -> enchantment.getKey().getKey()).collect(SuggestionResult.collector());
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(Registry.ENCHANTMENT.iterator(), Spliterator.ORDERED), false)
+            .map(enchantment -> enchantment.getKey().getKey())
+            .collect(SuggestionResult.collector());
     }
 
 

@@ -4,5 +4,4 @@ package dev.portero.xenon.bridge;
 public interface BridgeInitializer {
 
     void initialize();
-
 }

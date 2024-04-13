@@ -66,5 +66,4 @@ public class BukkitSchedulerImpl implements Scheduler {
     private long toTick(Duration duration) {
         return duration.toMillis() / 50L;
     }
-
 }

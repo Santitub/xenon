@@ -39,5 +39,4 @@ class BridgeManager {
             this.logger.info("Successfully hooked into " + pluginName + " bridge!");
         }
     }
-
 }

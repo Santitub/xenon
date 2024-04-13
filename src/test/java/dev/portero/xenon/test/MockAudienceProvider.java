@@ -55,8 +55,7 @@ public class MockAudienceProvider extends FacetAudienceProvider<Viewer, MockAudi
         public void contributePointers(Viewer viewer, net.kyori.adventure.pointer.Pointers.Builder builder) {
             if (viewer.isConsole()) {
                 builder.withStatic(FacetPointers.TYPE, FacetPointers.Type.CONSOLE);
-            }
-            else {
+            } else {
                 builder.withDynamic(Identity.UUID, viewer::getUniqueId);
                 builder.withStatic(FacetPointers.TYPE, FacetPointers.Type.PLAYER);
             }
