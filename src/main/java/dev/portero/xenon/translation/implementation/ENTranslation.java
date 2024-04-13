@@ -21,19 +21,6 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-        "#",
-        "#     $$\\   $$\\                                         ",
-        "#     $$ |  $$ |                                        ",
-        "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
-        "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
-        "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
-        "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
-        "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
-        "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
-        "#",
-    })
-
-    @Description({
         " ",
         "# This section is responsible for all messages used during bad of a command argument.",
         "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",

@@ -21,19 +21,6 @@ public class ESTranslation extends AbstractTranslation {
     }
 
     @Description({
-        "#",
-        "#     $$\\   $$\\                                         ",
-        "#     $$ |  $$ |                                        ",
-        "#     \\$$\\ $$  | $$$$$$\\  $$$$$$$\\   $$$$$$\\  $$$$$$$\\  ",
-        "#      \\$$$$  / $$  __$$\\ $$  __$$\\ $$  __$$\\ $$  __$$\\ ",
-        "#      $$  $$<  $$$$$$$$ |$$ |  $$ |$$ /  $$ |$$ |  $$ |",
-        "#     $$  /\\$$\\ $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |",
-        "#     $$ /  $$ |\\$$$$$$$\\ $$ |  $$ |\\$$$$$$  |$$ |  $$ |",
-        "#     \\__|  \\__| \\_______|\\__|  \\__| \\______/ \\__|  \\__|",
-        "#",
-    })
-
-    @Description({
         " ",
         "# Esta sección es responsable de todos los mensajes utilizados durante el mal uso de un argumento de comando.",
         "# Se encarga de los mensajes relacionados con el argumento en sí, como errores, uso y más.",
