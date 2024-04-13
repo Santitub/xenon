@@ -21,7 +21,6 @@ public abstract class AbstractTranslation implements ReloadableTranslation {
 
     @Override
     public Resource resource(File folder) {
-        return Source.of(folder, "lang" + File.separator + this.language.getLang() + "_messages.yml");
+        return Source.of(folder, "lang" + File.separator + this.language.lang() + "_messages.yml");
     }
-
 }

@@ -6,25 +6,23 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
-public class Language {
+public record Language(String lang, List<String> aliases) {
 
     public static final Language ES = new Language("es", List.of("es_mx"));
     public static final Language EN = new Language("en", List.of("en_en"));
     public static final Language DEFAULT = Language.fromLocate(Locale.ROOT);
-
-    private final String lang;
-    private final List<String> aliases;
 
     public Language(String lang, List<String> aliases) {
         this.lang = lang;
         this.aliases = new ArrayList<>(aliases);
     }
 
-    public String getLang() {
-        return this.lang;
+    public static Language fromLocate(Locale locale) {
+        return new Language(locale.getLanguage(), List.of());
     }
 
-    public List<String> getAliases() {
+    @Override
+    public List<String> aliases() {
         return Collections.unmodifiableList(this.aliases);
     }
 
@@ -66,12 +64,7 @@ public class Language {
         return Objects.hash(this.lang);
     }
 
-    public static Language fromLocate(Locale locale) {
-        return new Language(locale.getLanguage(), List.of());
-    }
-
     public Locale toLocale() {
         return new Locale(this.lang);
     }
-
 }
