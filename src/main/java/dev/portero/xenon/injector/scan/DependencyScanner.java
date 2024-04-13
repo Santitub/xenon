@@ -10,6 +10,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +33,8 @@ public class DependencyScanner {
         return this;
     }
 
-    private DependencyScanner onAnnotation(Class<? extends Annotation> annotationType) {
+    private void onAnnotation(Class<? extends Annotation> annotationType) {
         this.annotations.put(annotationType, annotation -> BeanHolder.DEFAULT_NAME);
-        return this;
     }
 
     <A extends Annotation> DependencyScanner onAnnotation(Class<A> annotationType, ComponentNameProvider<A> componentNameProvider) {
@@ -44,8 +44,8 @@ public class DependencyScanner {
 
     public List<BeanCandidate> scan(Package... packages) {
         String[] packageNames = Arrays.stream(packages)
-            .map(onePackage -> onePackage.getName())
-            .toArray((int length) -> new String[length]);
+            .map(Package::getName)
+            .toArray(String[]::new);
 
         return this.scan(packageNames);
     }
@@ -122,8 +122,8 @@ public class DependencyScanner {
 
     private List<Class<?>> scanPackages(List<String> packages) {
         return packages.stream()
-            .map(packageName -> this.scanPackage(packageName))
-            .flatMap(classesFromPackage -> classesFromPackage.stream())
+            .map(this::scanPackage)
+            .flatMap(Collection::stream)
             .toList();
     }
 
