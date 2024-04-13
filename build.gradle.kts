@@ -10,11 +10,10 @@ plugins {
 }
 
 group = "dev.portero.xenon"
-version = "0.8.0-ALPHA"
+version = "0.8.4-ALPHA"
 
 repositories {
     mavenCentral()
-
     maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
     maven { url = uri("https://repo.panda-lang.org/releases/") }
     maven { url = uri("https://repository.minecodes.pl/releases/") }
@@ -24,8 +23,8 @@ repositories {
 
 dependencies {
     // Testing
-
-    testImplementation("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
+    testImplementation(
+        "io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT"
     )
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
@@ -37,7 +36,6 @@ dependencies {
     testImplementation("net.kyori:adventure-platform-facet:4.3.2")
 
     // Base libraries
-
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     compileOnly("io.papermc:paperlib:1.0.8")
 
@@ -72,8 +70,9 @@ bukkit {
     prefix = "Xenon"
     name = "Xenon"
     version = "${project.version}"
-    authors = listOf("Portero", "OtherAuthor")
+    authors = listOf("Portero")
     description = "A simple RPG plugin for Minecraft"
+    loadBefore = listOf("PlaceholderAPI", "LuckPerms")
 }
 
 java {
@@ -108,6 +107,11 @@ checkstyle {
 
 tasks.withType<RunServer> {
     minecraftVersion("1.20.4")
+
+    downloadPlugins {
+        url("https://ci.extendedclip.com/job/PlaceholderAPI/lastSuccessfulBuild/artifact/build/libs/PlaceholderAPI-2.11.6-DEV-191.jar")
+        url("https://ci.lucko.me/job/LuckPerms/lastSuccessfulBuild/artifact/bukkit/loader/build/libs/LuckPerms-Bukkit-5.4.121.jar")
+    }
 }
 
 tasks.getByName<Test>("test") {
@@ -115,8 +119,9 @@ tasks.getByName<Test>("test") {
 }
 
 tasks.withType<ShadowJar> {
-    dependsOn("test")
     dependsOn("checkstyleMain")
+    dependsOn("checkstyleTest")
+    dependsOn("test")
 
     archiveClassifier.set("")
     archiveFileName.set("Xenon-${project.version}.jar")
