@@ -21,8 +21,8 @@ public class LanguageComposer implements SimpleComposer<Language> {
     public Result<String, Exception> serialize(Language entity) {
         List<String> all = new ArrayList<>();
 
-        all.add(entity.getLang());
-        all.addAll(entity.getAliases());
+        all.add(entity.lang());
+        all.addAll(entity.aliases());
 
         return Result.ok(Joiner.on("|").join(all).toString());
     }

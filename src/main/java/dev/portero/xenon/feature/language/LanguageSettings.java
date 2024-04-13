@@ -13,7 +13,7 @@ public interface LanguageSettings {
         }
 
         @Override
-        public void setLanguage(Language language) {}
+        public void setLanguage(Language language) {
+        }
     };
-
 }
