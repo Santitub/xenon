@@ -8,22 +8,22 @@ import java.util.Map;
 public class DurationParser extends TemporalAmountParser<Duration> {
 
     public static final TemporalAmountParser<Duration> TIME_UNITS = new DurationParser()
-            .withUnit("ms", ChronoUnit.MILLIS)
-            .withUnit("s", ChronoUnit.SECONDS)
-            .withUnit("m", ChronoUnit.MINUTES)
-            .withUnit("h", ChronoUnit.HOURS);
+        .withUnit("ms", ChronoUnit.MILLIS)
+        .withUnit("s", ChronoUnit.SECONDS)
+        .withUnit("m", ChronoUnit.MINUTES)
+        .withUnit("h", ChronoUnit.HOURS);
 
     public static final TemporalAmountParser<Duration> DATE_TIME_UNITS = new DurationParser()
-            .withUnit("ns", ChronoUnit.NANOS)
-            .withUnit("us", ChronoUnit.MICROS)
-            .withUnit("ms", ChronoUnit.MILLIS)
-            .withUnit("s", ChronoUnit.SECONDS)
-            .withUnit("m", ChronoUnit.MINUTES)
-            .withUnit("h", ChronoUnit.HOURS)
-            .withUnit("d", ChronoUnit.DAYS)
-            .withUnit("w", ChronoUnit.WEEKS)
-            .withUnit("mo", ChronoUnit.MONTHS)
-            .withUnit("y", ChronoUnit.YEARS);
+        .withUnit("ns", ChronoUnit.NANOS)
+        .withUnit("us", ChronoUnit.MICROS)
+        .withUnit("ms", ChronoUnit.MILLIS)
+        .withUnit("s", ChronoUnit.SECONDS)
+        .withUnit("m", ChronoUnit.MINUTES)
+        .withUnit("h", ChronoUnit.HOURS)
+        .withUnit("d", ChronoUnit.DAYS)
+        .withUnit("w", ChronoUnit.WEEKS)
+        .withUnit("mo", ChronoUnit.MONTHS)
+        .withUnit("y", ChronoUnit.YEARS);
 
     public DurationParser() {
         super(LocalDateTimeProvider.now());
@@ -44,15 +44,15 @@ public class DurationParser extends TemporalAmountParser<Duration> {
 
     @Override
     protected Duration plus(LocalDateTimeProvider baseForTimeEstimation, Duration temporalAmount, TemporalEntry temporalEntry) {
-        if (temporalEntry.getUnit().isDurationEstimated()) {
+        if (temporalEntry.unit().isDurationEstimated()) {
             LocalDateTime baseDateTime = baseForTimeEstimation.get();
-            LocalDateTime estimatedDateTime = baseDateTime.plus(temporalEntry.getCount(), temporalEntry.getUnit());
+            LocalDateTime estimatedDateTime = baseDateTime.plus(temporalEntry.count(), temporalEntry.unit());
             Duration estimatedDuration = Duration.between(baseDateTime, estimatedDateTime);
 
             return temporalAmount.plus(estimatedDuration);
         }
 
-        return temporalAmount.plus(temporalEntry.getCount(), temporalEntry.getUnit());
+        return temporalAmount.plus(temporalEntry.count(), temporalEntry.unit());
     }
 
 
