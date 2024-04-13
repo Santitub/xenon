@@ -31,10 +31,11 @@ class MethodBeanCandidate implements BeanCandidate {
     @Override
     public <T> BeanHolder<T> createBean(Class<T> clazz) {
         if (!this.isCandidate(clazz)) {
-            throw new IllegalArgumentException("Class " + clazz.getName() + " is not a candidate for " + this.method.getReturnType().getName());
+            throw new IllegalArgumentException("Class " + clazz.getName() + " is not a candidate for " + this.method.getReturnType()
+                .getName());
         }
 
-        Object instanceOfComponent = this.dependencyInjector.getDependencyProvider().getDependency(this.componentClass);
+        Object instanceOfComponent = this.dependencyInjector.dependencyProvider().getDependency(this.componentClass);
         Object instanceOfBean = this.dependencyInjector.invokeMethod(instanceOfComponent, this.method);
 
         return BeanHolder.of(this.bean.value(), clazz.cast(instanceOfBean));

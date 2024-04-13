@@ -7,17 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class DependencyInjector {
-
-    private final DependencyProvider dependencyProvider;
-
-    public DependencyInjector(DependencyProvider dependencyProvider) {
-        this.dependencyProvider = dependencyProvider;
-    }
-
-    public DependencyProvider getDependencyProvider() {
-        return this.dependencyProvider;
-    }
+public record DependencyInjector(DependencyProvider dependencyProvider) {
 
     @SuppressWarnings("unchecked")
     public <T> T newInstance(Class<T> clazz) {
@@ -87,5 +77,4 @@ public class DependencyInjector {
             throw new DependencyInjectorException(exception, declaringClass);
         }
     }
-
 }
