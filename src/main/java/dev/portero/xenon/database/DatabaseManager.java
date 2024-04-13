@@ -1,12 +1,12 @@
 package dev.portero.xenon.database;
 
-import dev.portero.xenon.configuration.implementation.PluginConfiguration;
 import com.google.common.base.Stopwatch;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.zaxxer.hikari.HikariDataSource;
+import dev.portero.xenon.configuration.implementation.PluginConfiguration;
 
 import java.io.File;
 import java.sql.SQLException;
@@ -81,7 +81,8 @@ public class DatabaseManager {
 
         this.connectionSource = new DataSourceConnectionSource(this.dataSource, this.dataSource.getJdbcUrl());
 
-        this.logger.info("Loaded database " + databaseType.toString().toLowerCase() + " in " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms");
+        this.logger.info("Loaded database " + databaseType.toString()
+            .toLowerCase() + " in " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms");
     }
 
     public void close() {
@@ -89,7 +90,7 @@ public class DatabaseManager {
             this.dataSource.close();
             this.connectionSource.close();
         } catch (Exception exception) {
-            exception.printStackTrace();
+            this.logger.severe("Failed to close database connection: " + exception.getMessage());
         }
     }
 
@@ -112,5 +113,4 @@ public class DatabaseManager {
     public ConnectionSource connectionSource() {
         return this.connectionSource;
     }
-
 }
