@@ -9,12 +9,16 @@ import org.bukkit.Location;
 
 import java.sql.SQLException;
 
-public class LocationPersister extends BaseDataType {
+public class LocationPersist extends BaseDataType {
 
-    private static final LocationPersister instance = new LocationPersister();
+    private static final LocationPersist instance = new LocationPersist();
 
-    private LocationPersister() {
-        super(SqlType.LONG_STRING, new Class<?>[] { LocationPersister.class });
+    private LocationPersist() {
+        super(SqlType.LONG_STRING, new Class<?>[]{LocationPersist.class});
+    }
+
+    public static LocationPersist getSingleton() {
+        return instance;
     }
 
     @Override
@@ -62,9 +66,4 @@ public class LocationPersister extends BaseDataType {
             Float.parseFloat(params[5])
         );
     }
-
-    public static LocationPersister getSingleton() {
-        return instance;
-    }
-
 }
