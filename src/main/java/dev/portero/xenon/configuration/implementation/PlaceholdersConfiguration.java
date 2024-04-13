@@ -7,19 +7,15 @@ import net.dzikoysk.cdn.source.Resource;
 import net.dzikoysk.cdn.source.Source;
 
 import java.io.File;
-import java.util.Map;
 
 @ConfigurationFile
 public class PlaceholdersConfiguration implements ReloadableConfig {
 
     @Description({
         "# Enables the creation of global placeholders",
-        "# An example is {prefix}, whenever you use {prefix} the specified value will be displayed",
-        "# Remember that it only works in Xenon!"
+        "# Remember that you can use the placeholders in Xenon configuration files",
+        "# Example: &7Hello, {prefix}&7World!"
     })
-    public Map<String, String> placeholders = Map.of(
-        "prefix", "&7"
-    );
 
     @Override
     public Resource resource(File folder) {
