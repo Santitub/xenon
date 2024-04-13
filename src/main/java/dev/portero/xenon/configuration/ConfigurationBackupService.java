@@ -11,6 +11,8 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class ConfigurationBackupService {
@@ -18,28 +20,32 @@ public class ConfigurationBackupService {
     private static final String BACKUP_FOLDER_NAME = "backup";
     private static final String BACKUP_FILE_EXTENSION = ".bak";
     private final File dataFolder;
+    private final Logger logger;
 
     @Inject
-    public ConfigurationBackupService(File dataFolder) {
+    public ConfigurationBackupService(File dataFolder, Logger logger) {
         this.dataFolder = dataFolder;
+        this.logger = logger;
     }
 
     public void createBackup() {
         File backupFolder = new File(this.dataFolder, BACKUP_FOLDER_NAME);
 
-        if (!backupFolder.exists()) {
-            backupFolder.mkdirs();
+        if (!backupFolder.exists() && !backupFolder.mkdirs()) {
+            throw new IllegalStateException("Failed to create backup directory: " + backupFolder);
         }
 
         LocalDate currentDate = LocalDate.now();
         File currentBackupFolder = new File(backupFolder, currentDate.toString());
-        if (!currentBackupFolder.exists()) {
-            currentBackupFolder.mkdirs();
+
+        if (!currentBackupFolder.exists() && !currentBackupFolder.mkdirs()) {
+            throw new IllegalStateException("Failed to create current date backup directory: " + currentBackupFolder);
         }
 
         this.copyFolderContents(this.dataFolder, currentBackupFolder);
         this.deleteIfOlderDirectory(backupFolder);
     }
+
 
     private void copyFolderContents(File sourceFolder, File targetFolder) {
         if (!sourceFolder.exists() || !sourceFolder.isDirectory()) {
@@ -80,7 +86,7 @@ public class ConfigurationBackupService {
         try {
             Files.copy(targetFolder.toPath(), path.toPath(), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException exception) {
-            exception.printStackTrace();
+            this.logger.log(Level.SEVERE, "Failed to copy file to backup location " + path + ": " + exception.getMessage());
         }
     }
 
@@ -107,7 +113,7 @@ public class ConfigurationBackupService {
                     FileUtils.deleteDirectory(folder);
                 }
             } catch (DateTimeParseException | IOException exception) {
-                exception.printStackTrace();
+                this.logger.log(Level.SEVERE, "Failed to delete old backup folder " + folder + ": " + exception.getMessage());
             }
         }
     }
