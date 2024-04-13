@@ -23,31 +23,33 @@ class FlyCommand {
     @Execute
     @Permission("xenon.fly")
     void execute(@Context Player player) {
-        player.setAllowFlight(!player.getAllowFlight());
-
-        this.noticeService.create()
-                .notice(translation -> player.getAllowFlight() ? translation.player().flyEnable() : translation.player().flyDisable())
-                .placeholder("{STATE}", translation -> player.getAllowFlight() ? translation.format().enable() : translation.format().disable())
-                .player(player.getUniqueId())
-                .send();
+        this.toggleFlight(player);
     }
 
     @Execute
     @Permission("xenon.fly.other")
     void execute(@Context Viewer viewer, @Arg Player target) {
-        target.setAllowFlight(!target.getAllowFlight());
+        this.toggleFlight(target);
 
         this.noticeService.create()
-                .notice(translation -> target.getAllowFlight() ? translation.player().flyEnable() : translation.player().flyDisable())
-                .placeholder("{STATE}", translation -> target.getAllowFlight() ? translation.format().enable() : translation.format().disable())
-                .player(target.getUniqueId())
-                .send();
+            .notice(translation -> target.getAllowFlight() ? translation.player().flySetEnable() : translation.player()
+                .flySetDisable())
+            .placeholder("{PLAYER}", target.getName())
+            .placeholder("{STATE}", translation -> target.getAllowFlight() ? translation.format()
+                .enable() : translation.format().disable())
+            .viewer(viewer)
+            .send();
+    }
+
+    private void toggleFlight(@Context Player player) {
+        player.setAllowFlight(!player.getAllowFlight());
 
         this.noticeService.create()
-                .notice(translation -> target.getAllowFlight() ? translation.player().flySetEnable() : translation.player().flySetDisable())
-                .placeholder("{PLAYER}", target.getName())
-                .placeholder("{STATE}", translation -> target.getAllowFlight() ? translation.format().enable() : translation.format().disable())
-                .viewer(viewer)
-                .send();
+            .notice(translation -> player.getAllowFlight() ? translation.player().flyEnable() : translation.player()
+                .flyDisable())
+            .placeholder("{STATE}", translation -> player.getAllowFlight() ? translation.format()
+                .enable() : translation.format().disable())
+            .player(player.getUniqueId())
+            .send();
     }
 }
