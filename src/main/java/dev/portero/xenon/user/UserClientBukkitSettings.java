@@ -43,7 +43,7 @@ class UserClientBukkitSettings implements UserClientSettings {
 
     @Override
     public Locale getLocate() {
-        return new Locale(this.getPlayerOrThrow().getLocale());
+        return new Locale(this.getPlayerOrThrow().locale().getLanguage());
     }
 
     @Override
