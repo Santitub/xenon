@@ -35,6 +35,7 @@ public final class BeanProcessorFactory {
     private BeanProcessorFactory() {
     }
 
+    @SuppressWarnings("unchecked")
     public static BeanProcessor defaultProcessors(Plugin plugin) {
         Server server = plugin.getServer();
         PluginManager pluginManager = server.getPluginManager();
