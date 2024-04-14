@@ -4,7 +4,7 @@ import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.injector.annotations.lite.LiteArgument;
 import dev.portero.xenon.translation.Translation;
 import dev.portero.xenon.translation.TranslationManager;
-import dev.portero.xenon.util.DurationUtil;
+import dev.portero.xenon.util.time.DurationUtil;
 import dev.portero.xenon.viewer.ViewerService;
 import dev.rollczi.litecommands.argument.Argument;
 import dev.rollczi.litecommands.argument.parser.ParseResult;

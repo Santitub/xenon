@@ -1,7 +1,4 @@
-package dev.portero.xenon.util;
-
-import dev.portero.xenon.util.time.DurationParser;
-import dev.portero.xenon.util.time.TemporalAmountParser;
+package dev.portero.xenon.util.time;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
