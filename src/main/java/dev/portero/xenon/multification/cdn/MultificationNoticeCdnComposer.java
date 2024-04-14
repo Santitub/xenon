@@ -16,6 +16,7 @@ import net.dzikoysk.cdn.reflect.TargetType;
 import net.dzikoysk.cdn.serdes.Composer;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
+import org.jetbrains.annotations.NotNull;
 import panda.std.Result;
 
 import java.time.Duration;
@@ -147,22 +148,7 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
             }
 
             if (part.content() instanceof Music music) {
-                SoundCategory category = music.category();
-
-                Entry entry = category == null
-                    ?
-                    new Entry(context.description, key, new Piece(MUSIC_WITHOUT_CATEGORY.formatted(
-                        music.sound().name(),
-                        String.valueOf(music.pitch()),
-                        String.valueOf(music.volume())
-                    )))
-                    :
-                    new Entry(context.description, key, new Piece(MUSIC_WITH_CATEGORY.formatted(
-                        music.sound().name(),
-                        category.name(),
-                        String.valueOf(music.pitch()),
-                        String.valueOf(music.volume())
-                    )));
+                Entry entry = this.getSoundCategoryEntry(context, music, key);
 
                 section.append(entry);
                 continue;
@@ -172,6 +158,25 @@ public class MultificationNoticeCdnComposer implements Composer<Notice> {
         }
 
         return Result.ok(section);
+    }
+
+    private @NotNull Entry getSoundCategoryEntry(SerializeContext context, Music music, String key) {
+        SoundCategory category = music.category();
+
+        return category == null
+            ?
+            new Entry(context.description, key, new Piece(MUSIC_WITHOUT_CATEGORY.formatted(
+                music.sound().name(),
+                String.valueOf(music.pitch()),
+                String.valueOf(music.volume())
+            )))
+            :
+            new Entry(context.description, key, new Piece(MUSIC_WITH_CATEGORY.formatted(
+                music.sound().name(),
+                category.name(),
+                String.valueOf(music.pitch()),
+                String.valueOf(music.volume())
+            )));
     }
 
     @Override
