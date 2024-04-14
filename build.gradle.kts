@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.portero.xenon"
-version = "0.8.4-ALPHA"
+version = "0.8.6-ALPHA"
 
 repositories {
     mavenCentral()
