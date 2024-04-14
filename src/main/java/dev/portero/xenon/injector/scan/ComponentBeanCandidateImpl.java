@@ -70,15 +70,5 @@ class ComponentBeanCandidateImpl<COMPONENT extends Annotation> implements BeanCa
         public List<Annotation> getAnnotations() {
             return List.of(ComponentBeanCandidateImpl.this.componentClass.getAnnotations());
         }
-
     }
-
-    @Override
-    public String toString() {
-        return "ComponentBeanCandidateImpl{" +
-            "componentClass=" + this.componentClass +
-            ", component=" + this.component.annotationType()
-            + '}';
-    }
-
 }
