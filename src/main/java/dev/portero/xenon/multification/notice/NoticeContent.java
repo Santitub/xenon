@@ -19,9 +19,6 @@ public sealed interface NoticeContent {
     }
 
     record None() implements NoticeContent {
-
         public static final None INSTANCE = new None();
-
     }
-
 }
