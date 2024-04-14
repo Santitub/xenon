@@ -1,4 +1,4 @@
-package dev.portero.xenon.feature.fly;
+package dev.portero.xenon.feature.essentials.fly;
 
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.notice.NoticeService;
