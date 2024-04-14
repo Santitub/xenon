@@ -21,10 +21,10 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-        " ",
-        "# This section is responsible for all messages used during bad of a command argument.",
-        "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",
-        " "
+            " ",
+            "# This section is responsible for all messages used during bad of a command argument.",
+            "# It is responsible for messages related to the argument itself, such as errors, usage, and more.",
+            " "
     })
     public ENArgumentSection argument = new ENArgumentSection();
 
@@ -58,10 +58,10 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-        " ",
-        "# This answer is responsible for the general formatting of some values.",
-        "# The purpose of the section is to reduce the repetition of some messages.",
-        " "
+            " ",
+            "# This answer is responsible for the general formatting of some values.",
+            "# The purpose of the section is to reduce the repetition of some messages.",
+            " "
     })
     public ENFormatSection format = new ENFormatSection();
 
@@ -73,10 +73,10 @@ public class ENTranslation extends AbstractTranslation {
     }
 
     @Description({
-        " ",
-        "# This section is responsible for player-related stuff and interactions with them.",
-        "# It is responsible for messages related to the player, such as commands, events, and more.",
-        " "
+            " ",
+            "# This section is responsible for player-related stuff and interactions with them.",
+            "# It is responsible for messages related to the player, such as commands, events, and more.",
+            " "
     })
     public ENPlayerSection player = new ENPlayerSection();
 
@@ -90,6 +90,11 @@ public class ENTranslation extends AbstractTranslation {
         @Description({" ", "# {PLAYER} - The specified player in the command, {STATE} - The current fly status of a player."})
         public Notice flySetEnable = Notice.chat("<gray>Fly for <yellow>{PLAYER} <gray>is now {STATE}");
         public Notice flySetDisable = Notice.chat("<gray>Fly for <yellow>{PLAYER} <gray>is now {STATE}");
+
+        @Description({" ", "# {GAMEMODE} - The specified gamemode in the command, {PLAYER} - The specified player in the command."})
+        public Notice gameModeNotCorrect = Notice.chat("<red>The specified gamemode is not correct.");
+        public Notice gameModeMessage = Notice.chat("<gray>Your gamemode has been set to <yellow>{GAMEMODE}");
+        public Notice gameModeSetMessage = Notice.chat("<gray>The gamemode of <yellow>{PLAYER} <gray>has been set to <yellow>{GAMEMODE}");
     }
 
 }

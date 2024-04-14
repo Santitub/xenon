@@ -90,5 +90,10 @@ public class ESTranslation extends AbstractTranslation {
         @Description({" ", "# {PLAYER} - El jugador especificado en el comando, {STATE} - El estado del modo volar de ese jugador en particular."})
         public Notice flySetEnable = Notice.chat("<gray>El vuelo para <yellow>{PLAYER} <gray>ahora está {STATE}");
         public Notice flySetDisable = Notice.chat("<gray>El vuelo para <yellow>{PLAYER} <gray>ahora está {STATE}");
+
+        @Description({" ", "# {GAMEMODE} - El modo de juego especificado en el comando, {PLAYER} - El jugador especificado en el comando."})
+        public Notice gameModeNotCorrect = Notice.chat("<red>El modo de juego especificado no es correcto.");
+        public Notice gameModeMessage = Notice.chat("<gray>Tu modo de juego ha sido establecido a <yellow>{GAMEMODE}");
+        public Notice gameModeSetMessage = Notice.chat("<gray>El modo de juego de <yellow>{PLAYER} <gray>ha sido establecido a <yellow>{GAMEMODE}");
     }
 }

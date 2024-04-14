@@ -5,18 +5,14 @@ import dev.portero.xenon.multification.notice.Notice;
 
 public interface Translation {
 
+    // Language section
     Language getLanguage();
 
-    // argument section
+    // Argument section
     ArgumentSection argument();
 
-    // format section
-    Format format();
-
-    // player section
-    PlayerSection player();
-
     interface ArgumentSection {
+
         Notice permissionMessage();
 
         Notice usageMessage();
@@ -52,15 +48,26 @@ public interface Translation {
         Notice incorrectNumberOfChunks();
 
         Notice incorrectLocation();
+
     }
 
+    // format section
+    Format format();
+
+    // Format section
     interface Format {
+
         String enable();
 
         String disable();
     }
 
+    // Player section
+    PlayerSection player();
+
     interface PlayerSection {
+
+        // Fly section
         Notice flyEnable();
 
         Notice flyDisable();
@@ -68,5 +75,12 @@ public interface Translation {
         Notice flySetEnable();
 
         Notice flySetDisable();
+
+        // GameMode section
+        Notice gameModeNotCorrect();
+
+        Notice gameModeMessage();
+
+        Notice gameModeSetMessage();
     }
 }
