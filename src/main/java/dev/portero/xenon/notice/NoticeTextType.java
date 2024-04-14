@@ -1,7 +1,9 @@
 package dev.portero.xenon.notice;
 
 import dev.portero.xenon.multification.notice.NoticeType;
+import lombok.Getter;
 
+@Getter
 public enum NoticeTextType {
 
     CHAT(NoticeType.CHAT),
@@ -13,9 +15,5 @@ public enum NoticeTextType {
 
     NoticeTextType(NoticeType type) {
         this.type = type;
-    }
-
-    public NoticeType getType() {
-        return this.type;
     }
 }
