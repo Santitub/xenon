@@ -1,4 +1,4 @@
-package dev.portero.xenon.feature.plugin;
+package dev.portero.xenon.feature.command.base;
 
 import com.google.common.base.Stopwatch;
 import dev.portero.xenon.configuration.ConfigurationManager;
