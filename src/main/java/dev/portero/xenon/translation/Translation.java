@@ -82,5 +82,11 @@ public interface Translation {
         Notice gameModeMessage();
 
         Notice gameModeSetMessage();
+
+        // Heal section
+        Notice healPlayer();
+
+        // Join section
+        Notice joinMessage();
     }
 }

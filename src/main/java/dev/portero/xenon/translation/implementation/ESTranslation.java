@@ -95,5 +95,13 @@ public class ESTranslation extends AbstractTranslation {
         public Notice gameModeNotCorrect = Notice.chat("<red>El modo de juego especificado no es correcto.");
         public Notice gameModeMessage = Notice.chat("<gray>Tu modo de juego ha sido establecido a <yellow>{GAMEMODE}");
         public Notice gameModeSetMessage = Notice.chat("<gray>El modo de juego de <yellow>{PLAYER} <gray>ha sido establecido a <yellow>{GAMEMODE}");
+
+        // Heal section
+        @Description({" ", "# {PLAYER} - El jugador especificado en el comando."})
+        public Notice healPlayer = Notice.chat("<gray>Has curado a <yellow>{PLAYER} <gray>!");
+
+        // Join section
+        @Description({" ", "# {PLAYER} - El jugador especificado en el comando."})
+        public Notice joinMessage = Notice.chat("<gray>Bienvenido a Xenon, <yellow>{PLAYER} <gray>! Te hemos teletransportado al punto de aparición.");
     }
 }

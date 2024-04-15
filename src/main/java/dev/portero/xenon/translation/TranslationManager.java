@@ -1,6 +1,5 @@
 package dev.portero.xenon.translation;
 
-
 import dev.portero.xenon.feature.language.Language;
 import dev.portero.xenon.feature.language.LanguageSettings;
 import dev.portero.xenon.multification.translation.TranslationProvider;

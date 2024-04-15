@@ -28,5 +28,4 @@ public final class TranslationFactory {
 
         return OTHER_LANG_TRANSLATION.apply(language);
     }
-
 }

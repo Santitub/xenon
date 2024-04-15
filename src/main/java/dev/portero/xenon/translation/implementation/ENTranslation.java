@@ -95,6 +95,13 @@ public class ENTranslation extends AbstractTranslation {
         public Notice gameModeNotCorrect = Notice.chat("<red>The specified gamemode is not correct.");
         public Notice gameModeMessage = Notice.chat("<gray>Your gamemode has been set to <yellow>{GAMEMODE}");
         public Notice gameModeSetMessage = Notice.chat("<gray>The gamemode of <yellow>{PLAYER} <gray>has been set to <yellow>{GAMEMODE}");
+
+        @Description({" ", "# {PLAYER} - The specified player in the command."})
+        public Notice healPlayer = Notice.chat("<gray>{PLAYER} has been healed.");
+
+        // Join section
+        @Description({" ", "# {PLAYER} - The specified player in the command."})
+        public Notice joinMessage = Notice.chat("<gray>Welcome <yellow>{PLAYER} <gray>to the server!");
     }
 
 }
