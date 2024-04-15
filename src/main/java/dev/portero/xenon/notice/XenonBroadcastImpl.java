@@ -5,7 +5,7 @@ import dev.portero.xenon.multification.executor.AsyncExecutor;
 import dev.portero.xenon.multification.locale.LocaleProvider;
 import dev.portero.xenon.multification.notice.Notice;
 import dev.portero.xenon.multification.notice.NoticeBroadcastImpl;
-import dev.portero.xenon.multification.notice.NoticeContent;
+import dev.portero.xenon.multification.notice.NoticeContent.Text;
 import dev.portero.xenon.multification.notice.NoticeType;
 import dev.portero.xenon.multification.notice.provider.TextMessageProvider;
 import dev.portero.xenon.multification.platform.PlatformBroadcaster;
@@ -23,25 +23,25 @@ import java.util.function.Function;
  * This class is an extension of {@link NoticeBroadcastImpl} that provides more methods for creating notices.
  */
 public class XenonBroadcastImpl<Viewer, Translation, B extends XenonBroadcastImpl<Viewer, Translation, B>>
-    extends NoticeBroadcastImpl<Viewer, Translation, B> {
+        extends NoticeBroadcastImpl<Viewer, Translation, B> {
 
     public XenonBroadcastImpl(
-        AsyncExecutor asyncExecutor,
-        TranslationProvider<Translation> translationProvider,
-        ViewerProvider<Viewer> viewerProvider,
-        PlatformBroadcaster platformBroadcaster,
-        LocaleProvider<Viewer> localeProvider,
-        AudienceConverter<Viewer> audienceConverter,
-        Replacer<Viewer> replacer
+            AsyncExecutor asyncExecutor,
+            TranslationProvider<Translation> translationProvider,
+            ViewerProvider<Viewer> viewerProvider,
+            PlatformBroadcaster platformBroadcaster,
+            LocaleProvider<Viewer> localeProvider,
+            AudienceConverter<Viewer> audienceConverter,
+            Replacer<Viewer> replacer
     ) {
         super(
-            asyncExecutor,
-            translationProvider,
-            viewerProvider,
-            platformBroadcaster,
-            localeProvider,
-            audienceConverter,
-            replacer
+                asyncExecutor,
+                translationProvider,
+                viewerProvider,
+                platformBroadcaster,
+                localeProvider,
+                audienceConverter,
+                replacer
         );
     }
 
@@ -52,7 +52,7 @@ public class XenonBroadcastImpl<Viewer, Translation, B extends XenonBroadcastImp
     public B notice(NoticeTextType type, TextMessageProvider<Translation> extractor) {
         this.notifications.add(translation -> {
             List<String> list = Collections.singletonList(extractor.extract(translation));
-            NoticeContent.Text content = new NoticeContent.Text(list);
+            Text content = new Text(list);
 
             NoticeType noticeType = type.getType();
             return Notice.of(noticeType, content);
@@ -64,7 +64,7 @@ public class XenonBroadcastImpl<Viewer, Translation, B extends XenonBroadcastImp
     public B notice(NoticeTextType type, String message) {
         this.notifications.add(translation -> {
             List<String> list = Collections.singletonList(message);
-            NoticeContent.Text content = new NoticeContent.Text(list);
+            Text content = new Text(list);
 
             NoticeType noticeType = type.getType();
             return Notice.of(noticeType, content);
@@ -76,7 +76,7 @@ public class XenonBroadcastImpl<Viewer, Translation, B extends XenonBroadcastImp
     public B messages(Function<Translation, List<String>> messages) {
         this.notifications.add(translation -> {
             List<String> list = messages.apply(translation);
-            NoticeContent.Text content = new NoticeContent.Text(list);
+            Text content = new Text(list);
 
             return Notice.of(NoticeType.CHAT, content);
         });
