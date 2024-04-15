@@ -1,4 +1,4 @@
-package dev.portero.xenon.feature.essentials.gamemode;
+package dev.portero.xenon.feature.command.gamemode;
 
 import dev.portero.xenon.injector.annotations.Inject;
 import dev.portero.xenon.notice.NoticeService;
